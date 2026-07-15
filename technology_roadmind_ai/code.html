@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Technology Stack | RoadMind AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#727785",
+                    "surface-tint": "#005bc0",
+                    "on-primary": "#ffffff",
+                    "tertiary-container": "#c55500",
+                    "surface": "#faf9fd",
+                    "secondary": "#005ac1",
+                    "on-secondary-fixed": "#001a41",
+                    "surface-bright": "#faf9fd",
+                    "on-surface": "#1a1b1e",
+                    "inverse-primary": "#adc7ff",
+                    "on-primary-container": "#ffffff",
+                    "surface-container-high": "#e9e7eb",
+                    "inverse-on-surface": "#f1f0f4",
+                    "tertiary-fixed": "#ffdbcb",
+                    "surface-dim": "#dbd9dd",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-highest": "#e3e2e6",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed": "#001a41",
+                    "on-primary-fixed-variant": "#004493",
+                    "primary-fixed": "#d8e2ff",
+                    "on-surface-variant": "#414754",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb691",
+                    "secondary-container": "#4d8efe",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "on-tertiary-fixed-variant": "#783100",
+                    "tertiary": "#9e4300",
+                    "primary-fixed-dim": "#adc7ff",
+                    "secondary-fixed": "#d8e2ff",
+                    "on-background": "#1a1b1e",
+                    "surface-variant": "#e3e2e6",
+                    "on-secondary-container": "#00285c",
+                    "surface-container-low": "#f4f3f7",
+                    "primary": "#005bbf",
+                    "outline-variant": "#c1c6d6",
+                    "surface-container": "#efedf1",
+                    "on-tertiary-container": "#0e0200",
+                    "background": "#faf9fd",
+                    "on-secondary-fixed-variant": "#004494",
+                    "error-container": "#ffdad6",
+                    "inverse-surface": "#2f3033",
+                    "on-error": "#ffffff",
+                    "primary-container": "#1a73e8",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed": "#341100"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "4px",
+                    "xl": "48px",
+                    "lg": "32px",
+                    "md": "24px",
+                    "xs": "8px",
+                    "gutter": "24px",
+                    "sm": "16px",
+                    "container-max": "1440px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "code": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "code": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid #DADCE0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0px 12px 32px rgba(0, 0, 0, 0.08);
+            border-color: #005bbf;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- TopNavBar -->
+<header class="bg-surface docked full-width top-0 sticky z-50 border-b border-outline-variant">
+<nav class="flex justify-between items-center px-gutter w-full max-w-container-max mx-auto h-20">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary text-[32px]">memory</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">RoadMind AI</span>
+</div>
+<div class="hidden md:flex items-center gap-lg">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Home</a>
+<a class="font-body-md text-body-md text-primary border-b-2 border-primary pb-1" href="#">Features</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">AI Workflow</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Dashboard</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Map</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Analytics</a>
+</div>
+<div class="flex items-center gap-md">
+<button class="text-primary font-label-md px-md py-sm hover:bg-surface-container-low transition-colors duration-200">Login</button>
+<button class="bg-primary-container text-on-primary font-label-md px-lg py-sm rounded-lg active:scale-[0.98] transition-all">Get Started</button>
+</div>
+</nav>
+</header>
+<main class="w-full max-w-container-max mx-auto px-gutter py-xl">
+<!-- Hero Section -->
+<section class="mb-xl max-w-3xl">
+<h1 class="font-display-lg text-display-lg mb-sm text-on-surface">Precision Stack for Enterprise Safety</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Our infrastructure is built for sub-millisecond latency and 99.99% reliability, leveraging the world's most advanced AI frameworks and low-level engineering for mission-critical road safety.</p>
+</section>
+<!-- Bento Grid Tech Stack -->
+<div class="bento-grid">
+<!-- AI Frameworks - Large Card -->
+<div class="col-span-12 md:col-span-8 glass-card rounded-xl p-lg flex flex-col justify-between min-h-[400px] overflow-hidden relative">
+<div class="relative z-10">
+<div class="flex items-center gap-xs mb-md">
+<div class="w-12 h-12 rounded-lg bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[28px]">psychology</span>
+</div>
+<span class="font-label-md text-label-md text-primary tracking-widest uppercase">Artificial Intelligence</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg mb-sm">Neural Engine: PyTorch &amp; YOLOv8</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-lg mb-md">
+                        Proprietary computer vision models trained on millions of miles of diverse road data. We utilize custom-tuned YOLOv8 architectures on the PyTorch ecosystem to achieve real-time hazard detection with unprecedented accuracy.
+                    </p>
+<div class="flex flex-wrap gap-xs">
+<span class="px-sm py-1 bg-surface-container-high rounded-full font-label-md text-on-surface-variant">TensorRT Optimization</span>
+<span class="px-sm py-1 bg-surface-container-high rounded-full font-label-md text-on-surface-variant">Distributed Training</span>
+<span class="px-sm py-1 bg-surface-container-high rounded-full font-label-md text-on-surface-variant">CUDA Kernels</span>
+</div>
+</div>
+<div class="absolute -right-12 -bottom-12 w-80 h-80 opacity-20 group-hover:opacity-40 transition-opacity">
+<div class="w-full h-full bg-contain bg-no-repeat" data-alt="A sophisticated abstract 3D visualization of neural network pathways and interconnected nodes glowing in primary blue and deep navy. The style is clean, corporate, and high-fidelity, representing advanced AI architecture on a pristine white background. High-key studio lighting with sharp digital precision." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCzBmumiL8FUld6Kl4nRqOdnCAREcZkGMxWAbqCnNqYAgCHBaDqmDWSPesnfRNMnFDbg8gUpwjGL4SkaahOvJd-I7fwYrl1buGBf4WLoeZrJHiy8--vXqmOEddqHOeD_U9gCSPcIKmLPujbu-G53EWTkSvyxc4FSdAJLuLM2RXiL0lfK4iceALf_fL0idzek3cSF7ogpRGrNR3lZiHam4PbtTvB_w-OgmJMi0IYtqfhn3YQPm4R8-UrEkexNcbvxer_jEk5aQttHofZ')"></div>
+</div>
+</div>
+<!-- Edge Computing - Side Card -->
+<div class="col-span-12 md:col-span-4 glass-card rounded-xl p-lg flex flex-col">
+<div class="w-12 h-12 rounded-lg bg-tertiary-fixed flex items-center justify-center text-tertiary mb-md">
+<span class="material-symbols-outlined text-[28px]">sensors</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-sm">Edge Processing</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-lg">
+                    Localized data processing reduces bandwidth costs and ensures safety decisions are made at the vehicle level, not the cloud.
+                </p>
+<div class="mt-auto pt-md border-t border-outline-variant flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface">Latency</span>
+<span class="font-label-md text-label-md text-primary">&lt; 15ms</span>
+</div>
+</div>
+<!-- Backend - Small Card -->
+<div class="col-span-12 md:col-span-4 glass-card rounded-xl p-lg">
+<div class="w-10 h-10 rounded-lg bg-secondary-fixed flex items-center justify-center text-secondary mb-md">
+<span class="material-symbols-outlined">terminal</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-xs">Systems Engineering</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                    Memory-safe, high-performance backends written in **Rust** and **Go** for maximum throughput and security.
+                </p>
+</div>
+<!-- Communication - Small Card -->
+<div class="col-span-12 md:col-span-4 glass-card rounded-xl p-lg">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center text-on-surface-variant mb-md">
+<span class="material-symbols-outlined">hub</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-xs">MQTT Messaging</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                    Ultra-lean pub/sub architecture for reliable machine-to-machine communication over unstable cellular networks.
+                </p>
+</div>
+<!-- Cloud - Small Card -->
+<div class="col-span-12 md:col-span-4 glass-card rounded-xl p-lg">
+<div class="w-10 h-10 rounded-lg bg-primary-fixed flex items-center justify-center text-primary mb-md">
+<span class="material-symbols-outlined">cloud_done</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-xs">Hybrid Infrastructure</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                    Multi-cloud orchestration ensuring total redundancy across AWS and GCP nodes for global enterprise scalability.
+                </p>
+</div>
+<!-- Analytics - Medium Card -->
+<div class="col-span-12 md:col-span-6 glass-card rounded-xl p-lg flex gap-md items-center">
+<div class="flex-1">
+<h3 class="font-headline-md text-headline-md mb-xs">Predictive Analytics</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-md">
+                        Statistical modeling used to forecast high-risk road conditions before they occur.
+                    </p>
+<button class="flex items-center gap-xs font-label-md text-primary group">
+                        Explore Data Models
+                        <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<div class="w-32 h-32 flex-shrink-0 bg-surface-container rounded-lg overflow-hidden border border-outline-variant">
+<div class="w-full h-full bg-cover" data-alt="A precise, minimalist data visualization chart with glowing blue lines and data points against a soft gray technical grid. The style is modern enterprise software aesthetics with clean vector-like crispness and professional balance. Bright lighting, soft shadows." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB_UbFdsREdQtAiBVIIx_vYtYPe7CEA1em7fASGw8lSpoVNlL3ZF9UT_eFPumhkladGpwNcs_T_7dBZmxYfXpv665Yvgn8rdNvXPwAGm6C4ytf6LfEb7VH_d3trFByuMVHGIjDQcFQ_X6_b01ANLE_HD7A7tRr1fC-7_gTkzoFBCyZiNi8OWFQxrcLHaXAarEFLEmtMflPl74YABIm-UeGt2Op8m-_ObYAi9KnI1CUt9wsU2HuBhXYx9yQvSHVqOdmkVsnXLzCtmnEZ')"></div>
+</div>
+</div>
+<!-- Security - Medium Card -->
+<div class="col-span-12 md:col-span-6 glass-card rounded-xl p-lg flex gap-md items-center">
+<div class="flex-1">
+<h3 class="font-headline-md text-headline-md mb-xs">End-to-End Security</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-md">
+                        AES-256 encryption for all data in transit and at rest, meeting strict government compliance.
+                    </p>
+<div class="flex gap-sm">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-success text-[16px] text-green-600">verified_user</span>
+<span class="font-label-md text-[10px] text-on-surface-variant uppercase tracking-tighter">SOC2 Type II</span>
+</div>
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-success text-[16px] text-green-600">verified_user</span>
+<span class="font-label-md text-[10px] text-on-surface-variant uppercase tracking-tighter">GDPR Ready</span>
+</div>
+</div>
+</div>
+<div class="w-32 h-32 flex-shrink-0 bg-surface-container rounded-lg overflow-hidden border border-outline-variant">
+<div class="w-full h-full bg-cover" data-alt="A symbolic digital representation of a secure vault or lock integrated with a circuit board pattern. The colors are predominantly cool grays and electric blues. The lighting is diffused and clean, emphasizing a corporate security and technological reliability atmosphere." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAX-R-5dwuEdDVCa3TnKF21IxbuB9xbBkYPMHgk_e1pS5oVfU72pnFozudoumgZrn4rbWUQJ2tDOfrx2bpcneyfrantw6jUgpo-BGrQOQAweOiCWW6XG_k9Hd-O1YpatU_N4v2uQ4jhcXEnCzAxA4sg9SOqHGfnQUG_SmUdfpcxcwaFsanTHWQ0_33Eoa82AMWU88HhyR9Xlc_YE06PqlZICyV1eT1sAqejJ2iRWT-xZLQyU1BWd20FQ0unnqba70HXNRu04UUO-yAw')"></div>
+</div>
+</div>
+</div>
+<!-- Tech Metrics Section -->
+<section class="mt-xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">
+<div class="p-lg border border-outline-variant rounded-xl bg-surface-container-low">
+<p class="font-label-md text-on-surface-variant mb-xs">Uptime Guarantee</p>
+<p class="font-display-lg text-display-lg text-primary">99.99<span class="text-headline-md">%</span></p>
+</div>
+<div class="p-lg border border-outline-variant rounded-xl bg-surface-container-low">
+<p class="font-label-md text-on-surface-variant mb-xs">API Latency</p>
+<p class="font-display-lg text-display-lg text-primary">45<span class="text-headline-md">ms</span></p>
+</div>
+<div class="p-lg border border-outline-variant rounded-xl bg-surface-container-low">
+<p class="font-label-md text-on-surface-variant mb-xs">Daily Events</p>
+<p class="font-display-lg text-display-lg text-primary">2.4<span class="text-headline-md">B</span></p>
+</div>
+<div class="p-lg border border-outline-variant rounded-xl bg-surface-container-low">
+<p class="font-label-md text-on-surface-variant mb-xs">Models Deployed</p>
+<p class="font-display-lg text-display-lg text-primary">120<span class="text-headline-md">+</span></p>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest border-t border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-center px-gutter py-lg w-full max-w-container-max mx-auto gap-md">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-on-surface text-[24px]">memory</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">RoadMind AI</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant order-last md:order-none">
+                © 2024 RoadMind AI. All rights reserved.
+            </p>
+<div class="flex gap-lg">
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-opacity hover:underline" href="#">Sitemap</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-opacity hover:underline" href="#">Privacy Policy</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-opacity hover:underline" href="#">Terms of Service</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-opacity hover:underline" href="#">Security</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const icon = card.querySelector('.material-symbols-outlined');
+                if (icon) {
+                    icon.style.transform = 'scale(1.1) rotate(-5deg)';
+                    icon.style.transition = 'transform 0.3s ease';
+                }
+            });
+            card.addEventListener('mouseleave', () => {
+                const icon = card.querySelector('.material-symbols-outlined');
+                if (icon) {
+                    icon.style.transform = 'scale(1) rotate(0deg)';
+                }
+            });
+        });
+    </script>
+</body></html>

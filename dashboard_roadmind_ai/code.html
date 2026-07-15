@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RoadMind AI - Live Detection Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#727785",
+                        "surface-tint": "#005bc0",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#c55500",
+                        "surface": "#faf9fd",
+                        "secondary": "#005ac1",
+                        "on-secondary-fixed": "#001a41",
+                        "surface-bright": "#faf9fd",
+                        "on-surface": "#1a1b1e",
+                        "inverse-primary": "#adc7ff",
+                        "on-primary-container": "#ffffff",
+                        "surface-container-high": "#e9e7eb",
+                        "inverse-on-surface": "#f1f0f4",
+                        "tertiary-fixed": "#ffdbcb",
+                        "surface-dim": "#dbd9dd",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-highest": "#e3e2e6",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#001a41",
+                        "on-primary-fixed-variant": "#004493",
+                        "primary-fixed": "#d8e2ff",
+                        "on-surface-variant": "#414754",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb691",
+                        "secondary-container": "#4d8efe",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "on-tertiary-fixed-variant": "#783100",
+                        "tertiary": "#9e4300",
+                        "primary-fixed-dim": "#adc7ff",
+                        "secondary-fixed": "#d8e2ff",
+                        "on-background": "#1a1b1e",
+                        "surface-variant": "#e3e2e6",
+                        "on-secondary-container": "#00285c",
+                        "surface-container-low": "#f4f3f7",
+                        "primary": "#005bbf",
+                        "outline-variant": "#c1c6d6",
+                        "surface-container": "#efedf1",
+                        "on-tertiary-container": "#0e0200",
+                        "background": "#faf9fd",
+                        "on-secondary-fixed-variant": "#004494",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#2f3033",
+                        "on-error": "#ffffff",
+                        "primary-container": "#1a73e8",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#341100"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "xl": "48px",
+                        "lg": "32px",
+                        "md": "24px",
+                        "xs": "8px",
+                        "gutter": "24px",
+                        "sm": "16px",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "code": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "code": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #DADCE0;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
+<div class="flex h-screen overflow-hidden">
+<!-- SideNavBar: Logic - Fixed left, 256px, tonal layer 1 -->
+<aside class="fixed left-0 top-0 h-full w-[256px] flex flex-col py-md px-sm bg-surface-container-low border-r border-outline-variant z-50">
+<div class="px-sm mb-lg">
+<h1 class="font-headline-md text-headline-md font-bold text-on-surface">RoadMind AI</h1>
+<p class="font-label-md text-label-md text-on-surface-variant opacity-70">Enterprise Safety</p>
+</div>
+<nav class="flex-grow flex flex-col space-y-1">
+<!-- Navigation Items -->
+<a class="flex items-center gap-sm px-sm py-xs rounded-lg bg-secondary-container text-on-secondary-container font-bold transition-all transform active:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Overview</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all transform active:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-label-md text-label-md">Hazard Map</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all transform active:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="query_stats">query_stats</span>
+<span class="font-label-md text-label-md">Predictive Analytics</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all transform active:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="local_shipping">local_shipping</span>
+<span class="font-label-md text-label-md">Vehicle Tracking</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all transform active:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="settings_suggest">settings_suggest</span>
+<span class="font-label-md text-label-md">System Health</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all transform active:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto flex flex-col gap-xs pt-md border-t border-outline-variant">
+<button class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-md text-label-md">Help Center</span>
+</button>
+<button class="flex items-center gap-sm px-sm py-xs rounded-lg text-error hover:bg-error-container transition-all">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-md text-label-md">Log Out</span>
+</button>
+<div class="mt-md p-sm bg-error-container rounded-xl">
+<button class="w-full py-xs px-sm bg-error text-on-error font-bold rounded-lg text-label-md flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-[18px]" data-icon="emergency">emergency</span>
+                        Emergency Alert
+                    </button>
+</div>
+</div>
+</aside>
+<!-- Main Workspace -->
+<main class="flex-grow flex flex-col ml-[256px] h-full overflow-hidden bg-surface">
+<!-- Header Section -->
+<header class="h-16 flex items-center justify-between px-lg bg-surface sticky top-0 z-40">
+<div class="flex items-center gap-md flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-full py-2 pl-10 pr-4 text-body-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" placeholder="Search vehicle ID, location, or alert..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<button class="p-2 hover:bg-surface-container-high rounded-full relative">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full border-2 border-surface"></span>
+</button>
+<div class="h-8 w-px bg-outline-variant mx-2"></div>
+<div class="flex items-center gap-xs cursor-pointer hover:bg-surface-container-high p-1 pr-3 rounded-full transition-all">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-[12px] overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Professional headshot of a senior safety operations manager, sharp focus, neutral gray background, corporate attire, light mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCM9Dfjru_Q4BX0SMrTgWQMX8zg2d9xjC5bFdDkVPv6rJT28n8G2jfDSlXBdpUlO0IwjLsK2xNk47i9Ze8zP7UseUWgN3MgftYmUMvG8hb4h-Nr5NFT1QwG1otqC2NX2QawO5pgqsOnYXh6B5-pn4ZiGzEHcZuJuSAUu-oOJwHvBuPtNpxzCGoAIQKjR0yRIljN88Xz9hmvra-IjZsV6dJQcmtj_XQsPTSloaDtCuIXLimCC7htfrDX5lcJYsF_9jNvDBgAZ7_F8PoW"/>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md leading-none">Sarah Jenkins</span>
+<span class="text-[10px] text-on-surface-variant leading-none">Admin</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Dashboard Content -->
+<div class="flex-grow p-lg overflow-y-auto custom-scrollbar">
+<div class="flex items-center justify-between mb-lg">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Live Detection</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Real-time AI monitoring for Highway 101-North Sector.</p>
+</div>
+<div class="flex gap-sm">
+<div class="flex items-center gap-xs px-sm py-xs bg-surface-container-high rounded-lg text-on-surface-variant">
+<span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+<span class="font-label-md text-label-md">Live Sync Active</span>
+</div>
+<button class="flex items-center gap-xs px-md py-xs bg-primary text-on-primary rounded-lg font-bold transition-all hover:opacity-90">
+<span class="material-symbols-outlined text-[20px]" data-icon="refresh">refresh</span>
+<span class="font-label-md text-label-md">Sync Feed</span>
+</button>
+</div>
+</div>
+<!-- Bento Grid Content -->
+<div class="bento-grid">
+<!-- KPI Row -->
+<div class="col-span-12 md:col-span-3 bg-surface-container-lowest border border-outline-variant p-md rounded-xl shadow-sm">
+<div class="flex items-center justify-between mb-sm">
+<span class="text-on-surface-variant font-label-md text-label-md uppercase tracking-wider">Active Vehicles</span>
+<span class="material-symbols-outlined text-primary" data-icon="directions_car">directions_car</span>
+</div>
+<div class="flex items-baseline gap-xs">
+<span class="text-[32px] font-bold">1,284</span>
+<span class="text-primary text-[12px] font-bold flex items-center"><span class="material-symbols-outlined text-[14px]" data-icon="arrow_upward">arrow_upward</span> 12%</span>
+</div>
+<div class="mt-sm h-1 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[75%]"></div>
+</div>
+</div>
+<div class="col-span-12 md:col-span-3 bg-surface-container-lowest border border-outline-variant p-md rounded-xl shadow-sm">
+<div class="flex items-center justify-between mb-sm">
+<span class="text-on-surface-variant font-label-md text-label-md uppercase tracking-wider">Hazards Detected</span>
+<span class="material-symbols-outlined text-error" data-icon="warning">warning</span>
+</div>
+<div class="flex items-baseline gap-xs">
+<span class="text-[32px] font-bold">42</span>
+<span class="text-error text-[12px] font-bold flex items-center"><span class="material-symbols-outlined text-[14px]" data-icon="trending_up">trending_up</span> 8%</span>
+</div>
+<div class="mt-sm h-1 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-error w-[40%]"></div>
+</div>
+</div>
+<div class="col-span-12 md:col-span-3 bg-surface-container-lowest border border-outline-variant p-md rounded-xl shadow-sm">
+<div class="flex items-center justify-between mb-sm">
+<span class="text-on-surface-variant font-label-md text-label-md uppercase tracking-wider">Average Speed</span>
+<span class="material-symbols-outlined text-secondary" data-icon="speed">speed</span>
+</div>
+<div class="flex items-baseline gap-xs">
+<span class="text-[32px] font-bold">68</span>
+<span class="text-on-surface-variant text-[14px] font-medium ml-1">mph</span>
+<span class="text-on-surface-variant text-[12px] opacity-70 ml-auto">Normal</span>
+</div>
+<div class="mt-sm h-1 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[60%]"></div>
+</div>
+</div>
+<div class="col-span-12 md:col-span-3 bg-surface-container-lowest border border-outline-variant p-md rounded-xl shadow-sm">
+<div class="flex items-center justify-between mb-sm">
+<span class="text-on-surface-variant font-label-md text-label-md uppercase tracking-wider">System Latency</span>
+<span class="material-symbols-outlined text-outline" data-icon="bolt">bolt</span>
+</div>
+<div class="flex items-baseline gap-xs">
+<span class="text-[32px] font-bold">14</span>
+<span class="text-on-surface-variant text-[14px] font-medium ml-1">ms</span>
+<span class="text-on-tertiary-fixed-variant text-[12px] font-bold bg-tertiary-fixed px-2 rounded-full ml-auto">Optimum</span>
+</div>
+<div class="mt-sm h-1 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-container w-[15%]"></div>
+</div>
+</div>
+<!-- Main Feed Section -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden flex flex-col min-h-[500px]">
+<div class="flex items-center justify-between p-md border-b border-outline-variant bg-surface-container-low">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="videocam">videocam</span>
+<h3 class="font-headline-md text-[18px] font-semibold">Live Camera Feed - HW101 N-22</h3>
+</div>
+<div class="flex gap-xs">
+<button class="px-xs py-1 hover:bg-surface-container-high rounded transition-all"><span class="material-symbols-outlined text-[20px]" data-icon="settings">settings</span></button>
+<button class="px-xs py-1 hover:bg-surface-container-high rounded transition-all"><span class="material-symbols-outlined text-[20px]" data-icon="fullscreen">fullscreen</span></button>
+</div>
+</div>
+<div class="flex-grow relative bg-neutral-900 group">
+<!-- Camera Placeholder with overlays -->
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-cover bg-center opacity-80" data-alt="A high-definition cinematic wide-angle shot of a multi-lane highway at dusk. Traffic is flowing steadily with cars showing bright headlights and tail lights. The lighting is a blend of natural sunset oranges and artificial blue and white streetlights. Minimalist overlay boxes highlighting vehicles are visible, emphasizing an AI detection interface." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD92MZnZC0RMT6tdlOFha4f5E7iwO6KRKtbWxkq3YFTKK2pkYslY3mb_8rrPADKBU9qHyvXa_qJNT0Y_6i3zTdrj0h3fOMIYMo9qw4fgVwniEFN6yXSxusgg8U0HjYtTVuOYxHBN1hycY3hnoSQJF-9-b-AvHxbRJ1wpgGHp3XsvzRlfVt-MTwvZUx1VT1ir5CAoOjTJrd2XZwam8HIQReBuhCfQj08wnS689A0eph7OYaqelAQXJzdUyLRmdct0_g2a_TGYAxyywEE')"></div>
+</div>
+<!-- Mock AI Overlays -->
+<div class="absolute inset-0 pointer-events-none p-lg">
+<!-- Vehicle Box 1 -->
+<div class="absolute top-1/4 left-1/3 w-32 h-24 border-2 border-primary rounded-sm bg-primary/10">
+<div class="absolute -top-6 left-0 bg-primary text-on-primary text-[10px] px-1 font-bold rounded">SUV [94% Conf]</div>
+</div>
+<!-- Hazard Box -->
+<div class="absolute bottom-1/3 right-1/4 w-20 h-20 border-2 border-error rounded-sm bg-error/20 animate-pulse">
+<div class="absolute -top-6 left-0 bg-error text-on-error text-[10px] px-1 font-bold rounded">DEBRIS [DETECTED]</div>
+</div>
+<!-- Vehicle Box 2 -->
+<div class="absolute top-1/2 left-1/2 w-48 h-32 border-2 border-secondary rounded-sm bg-secondary/10">
+<div class="absolute -top-6 left-0 bg-secondary text-on-secondary text-[10px] px-1 font-bold rounded">TRUCK [88% Conf]</div>
+</div>
+</div>
+<!-- Status HUD -->
+<div class="absolute bottom-4 left-4 p-sm bg-black/40 backdrop-blur-md rounded-lg border border-white/10 text-white flex gap-md">
+<div>
+<p class="text-[10px] uppercase opacity-60">Resolution</p>
+<p class="text-[12px] font-bold">4K 60FPS</p>
+</div>
+<div>
+<p class="text-[10px] uppercase opacity-60">Bitrate</p>
+<p class="text-[12px] font-bold">12.4 Mbps</p>
+</div>
+<div>
+<p class="text-[10px] uppercase opacity-60">Enc</p>
+<p class="text-[12px] font-bold">H.265+</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Side Activity List -->
+<div class="col-span-12 lg:col-span-4 bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden flex flex-col max-h-[500px]">
+<div class="p-md border-b border-outline-variant flex items-center justify-between">
+<h3 class="font-headline-md text-[18px] font-semibold">Recent Activity</h3>
+<button class="text-primary font-label-md text-label-md hover:underline">View All</button>
+</div>
+<div class="flex-grow overflow-y-auto custom-scrollbar p-sm space-y-sm">
+<!-- Activity Item 1 (Alert) -->
+<div class="flex gap-sm p-sm bg-error-container/30 border border-error/10 rounded-lg hover:bg-error-container/50 transition-all cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-error flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-error text-[20px]" data-icon="warning">warning</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<h4 class="font-label-md text-label-md font-bold text-on-error-container">Critical Hazard</h4>
+<span class="text-[10px] text-on-surface-variant">2m ago</span>
+</div>
+<p class="text-body-sm text-body-sm text-on-error-container opacity-80 mt-1 leading-tight">Debris detected in lane 2 at HW101-Sector B.</p>
+</div>
+</div>
+<!-- Activity Item 2 (Standard) -->
+<div class="flex gap-sm p-sm hover:bg-surface-container-low transition-all cursor-pointer border-b border-outline-variant/30 pb-md">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-secondary-container text-[20px]" data-icon="local_shipping">local_shipping</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<h4 class="font-label-md text-label-md font-bold">Oversize Load</h4>
+<span class="text-[10px] text-on-surface-variant">15m ago</span>
+</div>
+<p class="text-body-sm text-body-sm text-on-surface-variant mt-1 leading-tight">Class 8 vehicle detected moving 55mph. Monitoring required.</p>
+</div>
+</div>
+<!-- Activity Item 3 (Success) -->
+<div class="flex gap-sm p-sm hover:bg-surface-container-low transition-all cursor-pointer border-b border-outline-variant/30 pb-md">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="check_circle">check_circle</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<h4 class="font-label-md text-label-md font-bold">System Health Check</h4>
+<span class="text-[10px] text-on-surface-variant">45m ago</span>
+</div>
+<p class="text-body-sm text-body-sm text-on-surface-variant mt-1 leading-tight">All 24 active cameras reporting 0 packet loss.</p>
+</div>
+</div>
+<!-- Activity Item 4 (Info) -->
+<div class="flex gap-sm p-sm hover:bg-surface-container-low transition-all cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-primary-container text-[20px]" data-icon="info">info</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<h4 class="font-label-md text-label-md font-bold">Flow Update</h4>
+<span class="text-[10px] text-on-surface-variant">1h ago</span>
+</div>
+<p class="text-body-sm text-body-sm text-on-surface-variant mt-1 leading-tight">Traffic density increased by 14% on North-South corridor.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Analytics Mini Card -->
+<div class="col-span-12 bg-surface-container-lowest border border-outline-variant rounded-xl p-md shadow-sm">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-md">
+<div class="flex gap-lg">
+<div>
+<p class="text-on-surface-variant font-label-md text-label-md">Peak Detection Rate</p>
+<p class="text-headline-md font-bold">99.82%</p>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-md text-label-md">Active Sensors</p>
+<p class="text-headline-md font-bold">142/142</p>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-md text-label-md">Uptime</p>
+<p class="text-headline-md font-bold">99.99%</p>
+</div>
+</div>
+<div class="flex-grow h-12 flex items-end gap-1 px-lg">
+<!-- Sparkline Mock -->
+<div class="w-2 bg-primary/20 h-[30%] rounded-t"></div>
+<div class="w-2 bg-primary/20 h-[45%] rounded-t"></div>
+<div class="w-2 bg-primary/40 h-[60%] rounded-t"></div>
+<div class="w-2 bg-primary/30 h-[50%] rounded-t"></div>
+<div class="w-2 bg-primary/60 h-[80%] rounded-t"></div>
+<div class="w-2 bg-primary/50 h-[70%] rounded-t"></div>
+<div class="w-2 bg-primary h-full rounded-t"></div>
+<div class="w-2 bg-primary/70 h-[85%] rounded-t"></div>
+<div class="w-2 bg-primary/30 h-[40%] rounded-t"></div>
+<div class="w-2 bg-primary/20 h-[25%] rounded-t"></div>
+<div class="w-2 bg-primary/40 h-[55%] rounded-t"></div>
+<div class="w-2 bg-primary/60 h-[75%] rounded-t"></div>
+</div>
+<button class="px-lg py-xs border border-primary text-primary font-bold rounded-lg hover:bg-primary/5 transition-all">
+                                Detailed Reports
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Section -->
+<footer class="mt-auto bg-surface-container-highest border-t border-outline-variant py-sm px-lg flex flex-col md:flex-row justify-between items-center text-on-surface-variant">
+<p class="font-body-sm text-body-sm">© 2024 RoadMind AI. All rights reserved.</p>
+<div class="flex gap-md mt-sm md:mt-0">
+<a class="font-body-sm text-body-sm hover:text-primary transition-all" href="#">Sitemap</a>
+<a class="font-body-sm text-body-sm hover:text-primary transition-all" href="#">Privacy Policy</a>
+<a class="font-body-sm text-body-sm hover:text-primary transition-all" href="#">Terms of Service</a>
+<a class="font-body-sm text-body-sm hover:text-primary transition-all" href="#">Security</a>
+</div>
+</footer>
+</main>
+</div>
+<!-- Micro-interaction for search bar focus -->
+<script>
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('max-w-xl');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('max-w-xl');
+        });
+    </script>
+</body></html>

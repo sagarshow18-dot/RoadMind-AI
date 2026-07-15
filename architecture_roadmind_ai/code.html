@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>System Architecture | RoadMind AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#727785",
+                    "surface-tint": "#005bc0",
+                    "on-primary": "#ffffff",
+                    "tertiary-container": "#c55500",
+                    "surface": "#faf9fd",
+                    "secondary": "#005ac1",
+                    "on-secondary-fixed": "#001a41",
+                    "surface-bright": "#faf9fd",
+                    "on-surface": "#1a1b1e",
+                    "inverse-primary": "#adc7ff",
+                    "on-primary-container": "#ffffff",
+                    "surface-container-high": "#e9e7eb",
+                    "inverse-on-surface": "#f1f0f4",
+                    "tertiary-fixed": "#ffdbcb",
+                    "surface-dim": "#dbd9dd",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-highest": "#e3e2e6",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed": "#001a41",
+                    "on-primary-fixed-variant": "#004493",
+                    "primary-fixed": "#d8e2ff",
+                    "on-surface-variant": "#414754",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb691",
+                    "secondary-container": "#4d8efe",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "on-tertiary-fixed-variant": "#783100",
+                    "tertiary": "#9e4300",
+                    "primary-fixed-dim": "#adc7ff",
+                    "secondary-fixed": "#d8e2ff",
+                    "on-background": "#1a1b1e",
+                    "surface-variant": "#e3e2e6",
+                    "on-secondary-container": "#00285c",
+                    "surface-container-low": "#f4f3f7",
+                    "primary": "#005bbf",
+                    "outline-variant": "#c1c6d6",
+                    "surface-container": "#efedf1",
+                    "on-tertiary-container": "#0e0200",
+                    "background": "#faf9fd",
+                    "on-secondary-fixed-variant": "#004494",
+                    "error-container": "#ffdad6",
+                    "inverse-surface": "#2f3033",
+                    "on-error": "#ffffff",
+                    "primary-container": "#1a73e8",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed": "#341100"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "4px",
+                    "xl": "48px",
+                    "lg": "32px",
+                    "md": "24px",
+                    "xs": "8px",
+                    "gutter": "24px",
+                    "sm": "16px",
+                    "container-max": "1440px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "code": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "code": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .architecture-canvas {
+            background-image: radial-gradient(#DADCE0 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .node-pulse {
+            animation: pulse-border 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-border {
+            0%, 100% { border-color: #1A73E8; }
+            50% { border-color: #ADC7FF; }
+        }
+        .flow-line {
+            stroke-dasharray: 8;
+            animation: dash 10s linear infinite;
+        }
+        @keyframes dash {
+            to { stroke-dashoffset: -100; }
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="bg-surface docked full-width top-0 sticky z-50 border-b border-outline-variant">
+<div class="flex justify-between items-center px-gutter py-sm w-full max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary text-3xl">hub</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">RoadMind AI</span>
+</div>
+<nav class="hidden md:flex items-center gap-lg">
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Home</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Features</a>
+<a class="font-body-md text-primary border-b-2 border-primary pb-1" href="#">AI Workflow</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Map</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Analytics</a>
+</nav>
+<div class="flex items-center gap-sm">
+<button class="font-body-md text-on-surface-variant hover:text-primary px-sm py-xs">Login</button>
+<button class="bg-primary text-on-primary px-md py-xs rounded-lg font-body-md font-semibold hover:opacity-90 transition-opacity">Get Started</button>
+</div>
+</div>
+</header>
+<main class="flex-grow">
+<!-- Hero Section -->
+<section class="px-gutter py-xl bg-surface-container-low border-b border-outline-variant">
+<div class="max-w-container-max mx-auto text-center">
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-sm">Edge-to-Cloud Intelligence</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl mx-auto">
+                    The RoadMind AI architecture is built for ultra-low latency hazard detection and massive-scale data synchronization. 
+                    Explore how our modules interact from the vehicle to the global safety hub.
+                </p>
+</div>
+</section>
+<!-- Interactive Architecture Diagram -->
+<section class="w-full h-[800px] architecture-canvas relative overflow-hidden bg-white">
+<!-- Background SVG Connections -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+<!-- Vehicle to Edge -->
+<path class="flow-line" d="M 300 400 L 500 400" fill="none" stroke="#DADCE0" stroke-width="2"></path>
+<!-- Edge to MQTT -->
+<path class="flow-line" d="M 756 400 L 850 400" fill="none" stroke="#DADCE0" stroke-width="2"></path>
+<!-- MQTT to Cloud -->
+<path class="flow-line" d="M 1000 400 L 1150 400" fill="none" stroke="#DADCE0" stroke-width="2"></path>
+<!-- Bi-directional arrows -->
+<circle cx="500" cy="400" fill="#005bbf" r="4"></circle>
+<circle cx="850" cy="400" fill="#005bbf" r="4"></circle>
+<circle cx="1150" cy="400" fill="#005bbf" r="4"></circle>
+</svg>
+<div class="max-w-container-max mx-auto h-full relative px-gutter">
+<!-- Node 1: Vehicle Camera -->
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-72">
+<div class="bg-white border border-outline-variant p-md rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
+<div class="flex items-center gap-sm mb-xs">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">videocam</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Vehicle Camera</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-md">
+                            High-fidelity 4K vision sensor providing raw visual streams for real-time analysis.
+                        </p>
+<div class="flex flex-wrap gap-xs">
+<span class="px-xs py-1 bg-surface-container-highest rounded-full text-[10px] font-bold uppercase text-on-surface-variant">4K HDR</span>
+<span class="px-xs py-1 bg-surface-container-highest rounded-full text-[10px] font-bold uppercase text-on-surface-variant">60 FPS</span>
+</div>
+</div>
+<!-- Context Image -->
+<div class="mt-md rounded-lg overflow-hidden border border-outline-variant h-32">
+<img class="w-full h-full object-cover" data-alt="A professional, clean photograph of a modern automotive smart camera mounted behind a sleek rearview mirror. The lighting is bright and clinical, emphasizing the high-tech lens and matte black casing of the sensor. The background shows a softly blurred highway at sunset, suggesting real-world application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOzmTssip3LZ8gtepV7KxRKurHdqVKkZV1gUn2ujBCjeYfGISyxCSlFaqLpaFIun8AyVyRX0mt0cq8vOnk98tXLMrg6xPOXUkA5KVZ-HpDdxZJSqkCJKHCJz3sPYQIt7OoKyXLDKr2uegavt7gJIC7EHJRWTTT1ZKgwe8DG-lwnfH33QTsDLx-3AUlQjqAsaaJAzJU2O5Nb5OqIsqlY2HsDYLbghFCYX7qlilAUsjDKWE-8-ZE_wATeKjQVt9hx6DgzlFgmWbNOlg0"/>
+</div>
+</div>
+<!-- Node 2: Edge AI Engine -->
+<div class="absolute left-1/3 top-1/2 -translate-y-1/2 w-80 z-10">
+<div class="bg-primary-container text-white p-md rounded-xl shadow-lg border-2 border-primary node-pulse group">
+<div class="flex items-center gap-sm mb-xs">
+<div class="w-12 h-12 rounded-lg bg-white/20 flex items-center justify-center">
+<span class="material-symbols-outlined">memory</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md font-bold">Edge AI Engine</h3>
+<span class="text-[10px] font-bold uppercase tracking-widest opacity-80">Local Inference</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-primary/90 mb-md">
+                            Neural Processing Unit (NPU) running proprietary road-hazard detection models with sub-10ms latency.
+                        </p>
+<div class="space-y-sm">
+<div class="h-1 w-full bg-white/20 rounded-full overflow-hidden">
+<div class="h-full bg-white w-2/3"></div>
+</div>
+<div class="flex justify-between text-[11px] font-bold">
+<span>SYSTEM LOAD</span>
+<span>64%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Node 3: MQTT Hub -->
+<div class="absolute left-[65%] top-1/2 -translate-y-1/2 w-64 text-center">
+<div class="inline-flex flex-col items-center">
+<div class="w-20 h-20 bg-surface-container-low border border-outline-variant rounded-full flex items-center justify-center mb-sm shadow-sm hover:scale-105 transition-transform group">
+<span class="material-symbols-outlined text-4xl text-secondary">sensors</span>
+</div>
+<h3 class="font-label-md text-label-md text-on-surface uppercase tracking-widest mb-xs">MQTT Communication</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                            Low-bandwidth telemetry publishing and command subscription.
+                        </p>
+</div>
+</div>
+<!-- Node 4: Cloud Dashboard -->
+<div class="absolute right-0 top-1/2 -translate-y-1/2 w-80">
+<div class="bg-white border border-outline-variant rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+<div class="p-md border-b border-outline-variant bg-surface-container-low flex justify-between items-center">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary">cloud</span>
+<span class="font-label-md text-label-md">Cloud Dashboard</span>
+</div>
+<div class="flex gap-[2px]">
+<div class="w-2 h-2 rounded-full bg-error"></div>
+<div class="w-2 h-2 rounded-full bg-tertiary-container"></div>
+<div class="w-2 h-2 rounded-full bg-secondary-container"></div>
+</div>
+</div>
+<div class="h-40 bg-surface">
+<img class="w-full h-full object-cover" data-alt="A clean, corporate-style screenshot of a SaaS analytics dashboard. It features a dark mode interface with neon blue and green sparklines, a central heat map of a city's road network, and several circular KPI widgets showing safety scores. The aesthetic is high-density enterprise software, professional and minimalist." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWzSDpVxuqq_z_xwUPqhb2J1fD6ogNaYxwX_qDKY91WLjRLYm8emNBRW3JCNZV9kCI30Y16jhbVq1yBvhSufVEyKkbvFY0Wns8ehQfclqTJKlhcZ3Zi6iI4trYNl_SOUUccvwG9sWLy-gQjslHfNEGAypx7ujUdFDcf76-fqcI-ArOAMUcrAg2DaTvEb1AHJZBSX8hc36ExIatMyX60i5QTi4gCP8EsMzL9dNcAQCvUy_t0MuBrSmDRyyiO2OI2RWRNqbQ6dxrwfZE"/>
+</div>
+<div class="p-md space-y-xs">
+<div class="flex justify-between items-center">
+<span class="font-body-sm text-on-surface-variant">Uptime</span>
+<span class="font-label-md text-secondary">99.99%</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body-sm text-on-surface-variant">Fleet Sync</span>
+<span class="font-label-md text-secondary">Active</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Specs / Details -->
+<section class="px-gutter py-xl bg-surface">
+<div class="max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<!-- Feature Card 1 -->
+<div class="p-lg border border-outline-variant rounded-xl bg-white shadow-sm">
+<span class="material-symbols-outlined text-primary mb-sm">speed</span>
+<h4 class="font-headline-md text-headline-md mb-xs">Sub-10ms Latency</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                            Edge processing eliminates the round-trip time to the cloud, ensuring hazards are flagged in real-time.
+                        </p>
+</div>
+<!-- Feature Card 2 -->
+<div class="p-lg border border-outline-variant rounded-xl bg-white shadow-sm">
+<span class="material-symbols-outlined text-primary mb-sm">shield</span>
+<h4 class="font-headline-md text-headline-md mb-xs">End-to-End Encryption</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                            TLS 1.3 protocol ensures all telemetry and video data is fully protected from the vehicle to the dashboard.
+                        </p>
+</div>
+<!-- Feature Card 3 -->
+<div class="p-lg border border-outline-variant rounded-xl bg-white shadow-sm">
+<span class="material-symbols-outlined text-primary mb-sm">auto_graph</span>
+<h4 class="font-headline-md text-headline-md mb-xs">Scalable Hub</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                            Built on a microservices architecture that can handle 100,000+ simultaneous vehicle connections.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest border-t border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-center px-gutter py-lg w-full max-w-container-max mx-auto gap-md">
+<div class="flex flex-col gap-xs items-center md:items-start">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary text-xl">hub</span>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">RoadMind AI</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">© 2024 RoadMind AI. All rights reserved.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-lg">
+<a class="font-body-sm text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Sitemap</a>
+<a class="font-body-sm text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Privacy Policy</a>
+<a class="font-body-sm text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Terms of Service</a>
+<a class="font-body-sm text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Security</a>
+</div>
+<div class="flex gap-sm">
+<button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">public</span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">mail</span>
+</button>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions for the interactive nodes
+        document.querySelectorAll('.group').forEach(node => {
+            node.addEventListener('mouseenter', () => {
+                // Potential expansion logic or data detail trigger
+            });
+        });
+
+        // Simulating some status changes
+        const updateStatus = () => {
+            const loadVal = Math.floor(Math.random() * (70 - 60 + 1) + 60);
+            const loadBar = document.querySelector('.h-full.bg-white');
+            const loadText = document.querySelector('.flex.justify-between.text-\\[11px\\] span:last-child');
+            if(loadBar && loadText) {
+                loadBar.style.width = `${loadVal}%`;
+                loadText.innerText = `${loadVal}%`;
+            }
+        }
+        setInterval(updateStatus, 3000);
+    </script>
+</body></html>

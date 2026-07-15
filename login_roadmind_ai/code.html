@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login | RoadMind AI</title>
+<!-- Tailwind CSS with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* Focus-within effect for input containers */
+        .input-group:focus-within label {
+            color: #1A73E8;
+        }
+    </style>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#727785",
+                        "surface-tint": "#005bc0",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#c55500",
+                        "surface": "#faf9fd",
+                        "secondary": "#005ac1",
+                        "on-secondary-fixed": "#001a41",
+                        "surface-bright": "#faf9fd",
+                        "on-surface": "#1a1b1e",
+                        "inverse-primary": "#adc7ff",
+                        "on-primary-container": "#ffffff",
+                        "surface-container-high": "#e9e7eb",
+                        "inverse-on-surface": "#f1f0f4",
+                        "tertiary-fixed": "#ffdbcb",
+                        "surface-dim": "#dbd9dd",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-highest": "#e3e2e6",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#001a41",
+                        "on-primary-fixed-variant": "#004493",
+                        "primary-fixed": "#d8e2ff",
+                        "on-surface-variant": "#414754",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb691",
+                        "secondary-container": "#4d8efe",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "on-tertiary-fixed-variant": "#783100",
+                        "tertiary": "#9e4300",
+                        "primary-fixed-dim": "#adc7ff",
+                        "secondary-fixed": "#d8e2ff",
+                        "on-background": "#1a1b1e",
+                        "surface-variant": "#e3e2e6",
+                        "on-secondary-container": "#00285c",
+                        "surface-container-low": "#f4f3f7",
+                        "primary": "#005bbf",
+                        "outline-variant": "#c1c6d6",
+                        "surface-container": "#efedf1",
+                        "on-tertiary-container": "#0e0200",
+                        "background": "#faf9fd",
+                        "on-secondary-fixed-variant": "#004494",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#2f3033",
+                        "on-error": "#ffffff",
+                        "primary-container": "#1a73e8",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#341100"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "xl": "48px",
+                        "lg": "32px",
+                        "md": "24px",
+                        "xs": "8px",
+                        "gutter": "24px",
+                        "sm": "16px",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface-container-lowest min-h-screen flex flex-col">
+<!-- Suppressing TopNavBar and SideNavBar per "Destination Rule" (Transactional Page) -->
+<main class="flex-grow flex items-center justify-center px-gutter py-xl relative overflow-hidden">
+<!-- Subtle Ambient Background Element -->
+<div class="absolute inset-0 pointer-events-none opacity-20">
+<div class="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-secondary-fixed-dim rounded-full blur-[120px]"></div>
+<div class="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-primary-fixed-dim rounded-full blur-[100px]"></div>
+</div>
+<!-- Authentication Card -->
+<div class="w-full max-w-[440px] bg-white border border-outline-variant rounded-xl shadow-[0px_1px_3px_rgba(0,0,0,0.05)] p-lg relative z-10">
+<!-- Logo / Branding Area -->
+<div class="flex flex-col items-center mb-lg">
+<div class="mb-sm text-primary">
+<span class="material-symbols-outlined text-[48px]" style="font-variation-settings: 'FILL' 1;">
+                        shield_with_heart
+                    </span>
+</div>
+<h1 class="font-headline-md text-headline-md text-on-surface">RoadMind AI</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">Enterprise Safety Portal</p>
+</div>
+<!-- Login Form -->
+<form class="space-y-md">
+<!-- Email Input -->
+<div class="input-group">
+<label class="font-label-md text-label-md text-on-surface-variant block mb-xs" for="email">Email Address</label>
+<input class="w-full px-sm py-[12px] bg-white border border-outline-variant rounded-lg text-body-md focus:outline-none focus:ring-0 focus:border-primary-container transition-all placeholder:text-outline" id="email" placeholder="name@company.com" type="email"/>
+</div>
+<!-- Password Input -->
+<div class="input-group">
+<div class="flex justify-between items-center mb-xs">
+<label class="font-label-md text-label-md text-on-surface-variant" for="password">Password</label>
+<a class="font-label-md text-label-md text-primary hover:underline" href="#">Forgot password?</a>
+</div>
+<div class="relative">
+<input class="w-full px-sm py-[12px] bg-white border border-outline-variant rounded-lg text-body-md focus:outline-none focus:ring-0 focus:border-primary-container transition-all placeholder:text-outline" id="password" placeholder="••••••••" type="password"/>
+<button class="absolute right-sm top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-on-surface" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</div>
+<!-- Action Button -->
+<button class="w-full bg-primary-container text-on-primary py-[14px] px-md rounded-lg font-label-md text-label-md hover:opacity-90 active:scale-[0.98] transition-all flex justify-center items-center gap-xs shadow-sm" type="submit">
+                    Sign In
+                    <span class="material-symbols-outlined text-[18px]">login</span>
+</button>
+<!-- Divider -->
+<div class="relative py-xs flex items-center">
+<div class="flex-grow border-t border-outline-variant"></div>
+<span class="flex-shrink mx-sm text-on-surface-variant font-label-md text-label-md">or continue with</span>
+<div class="flex-grow border-t border-outline-variant"></div>
+</div>
+<!-- Social Sign-in -->
+<button class="w-full bg-white border border-outline-variant text-on-surface-variant py-[12px] px-md rounded-lg font-label-md text-label-md hover:bg-surface-container-low active:scale-[0.98] transition-all flex justify-center items-center gap-xs" type="button">
+<svg class="w-5 h-5" viewbox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+</svg>
+                    Sign in with Google
+                </button>
+</form>
+<!-- Footer Link -->
+<div class="mt-lg text-center">
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                    New to RoadMind? 
+                    <a class="text-primary font-bold hover:underline" href="#">Create an account</a>
+</p>
+</div>
+</div>
+</main>
+<!-- Minimalist Footer -->
+<footer class="bg-surface-container-highest border-t border-outline-variant py-md">
+<div class="max-w-container-max mx-auto px-gutter flex flex-col md:flex-row justify-between items-center gap-sm">
+<div class="flex items-center gap-xs">
+<span class="font-headline-sm text-on-surface font-bold">RoadMind AI</span>
+<span class="text-on-surface-variant font-body-sm">© 2024. All rights reserved.</span>
+</div>
+<div class="flex gap-md">
+<a class="font-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Security</a>
+</div>
+</div>
+</footer>
+<!-- Simple micro-interaction script for the login form -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.querySelector('form');
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const btn = e.target.querySelector('button[type="submit"]');
+                const originalContent = btn.innerHTML;
+                
+                // Visual feedback for click
+                btn.classList.add('scale-[0.98]');
+                btn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Validating...';
+                
+                setTimeout(() => {
+                    btn.classList.remove('scale-[0.98]');
+                    btn.innerHTML = originalContent;
+                }, 1000);
+            });
+        });
+    </script>
+</body></html>

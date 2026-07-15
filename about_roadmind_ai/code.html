@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About Us | RoadMind AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#727785",
+                        "surface-tint": "#005bc0",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#c55500",
+                        "surface": "#faf9fd",
+                        "secondary": "#005ac1",
+                        "on-secondary-fixed": "#001a41",
+                        "surface-bright": "#faf9fd",
+                        "on-surface": "#1a1b1e",
+                        "inverse-primary": "#adc7ff",
+                        "on-primary-container": "#ffffff",
+                        "surface-container-high": "#e9e7eb",
+                        "inverse-on-surface": "#f1f0f4",
+                        "tertiary-fixed": "#ffdbcb",
+                        "surface-dim": "#dbd9dd",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-highest": "#e3e2e6",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#001a41",
+                        "on-primary-fixed-variant": "#004493",
+                        "primary-fixed": "#d8e2ff",
+                        "on-surface-variant": "#414754",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb691",
+                        "secondary-container": "#4d8efe",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "on-tertiary-fixed-variant": "#783100",
+                        "tertiary": "#9e4300",
+                        "primary-fixed-dim": "#adc7ff",
+                        "secondary-fixed": "#d8e2ff",
+                        "on-background": "#1a1b1e",
+                        "surface-variant": "#e3e2e6",
+                        "on-secondary-container": "#00285c",
+                        "surface-container-low": "#f4f3f7",
+                        "primary": "#005bbf",
+                        "outline-variant": "#c1c6d6",
+                        "surface-container": "#efedf1",
+                        "on-tertiary-container": "#0e0200",
+                        "background": "#faf9fd",
+                        "on-secondary-fixed-variant": "#004494",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#2f3033",
+                        "on-error": "#ffffff",
+                        "primary-container": "#1a73e8",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#341100"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "xl": "48px",
+                        "lg": "32px",
+                        "md": "24px",
+                        "xs": "8px",
+                        "gutter": "24px",
+                        "sm": "16px",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "code": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "code": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .timeline-line {
+            width: 2px;
+            background: repeating-linear-gradient(to bottom, #1A73E8 0, #1A73E8 4px, transparent 4px, transparent 8px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- TopNavBar -->
+<nav class="bg-surface dark:bg-inverse-surface border-b border-outline-variant dark:border-outline docked full-width top-0 sticky z-50 transition-colors duration-200">
+<div class="flex justify-between items-center px-gutter w-full max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-8">
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary tracking-tight">RoadMind AI</span>
+<div class="hidden md:flex gap-6">
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low transition-colors duration-200 px-2 py-1" href="#">Home</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low transition-colors duration-200 px-2 py-1" href="#">Features</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low transition-colors duration-200 px-2 py-1" href="#">AI Workflow</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low transition-colors duration-200 px-2 py-1" href="#">Dashboard</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low transition-colors duration-200 px-2 py-1" href="#">Map</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low transition-colors duration-200 px-2 py-1" href="#">Analytics</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant font-label-md px-4 py-2 hover:bg-surface-container-low rounded-lg transition-all">Login</button>
+<button class="bg-primary-container text-on-primary-container font-label-md px-6 py-2 rounded-lg hover:shadow-lg active:scale-95 transition-all">Get Started</button>
+</div>
+</div>
+</nav>
+<main class="w-full max-w-container-max mx-auto px-gutter py-xl">
+<!-- Hero Section -->
+<header class="mb-xl text-center md:text-left max-w-3xl">
+<span class="text-primary font-label-md uppercase tracking-widest mb-4 block">Pioneering Road Safety</span>
+<h1 class="font-display-lg text-display-lg text-on-surface mb-6 leading-tight">Intelligent Infrastructure for a Safer Tomorrow.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">RoadMind AI bridges the gap between infrastructure and artificial intelligence to eliminate traffic fatalities and optimize global transit efficiency.</p>
+</header>
+<!-- Problem Statement Section (Bento Style) -->
+<section class="mb-xl">
+<div class="bento-grid">
+<div class="col-span-12 md:col-span-8 bg-surface-container-low border border-outline-variant rounded-xl p-lg flex flex-col justify-center min-h-[400px] relative overflow-hidden">
+<div class="relative z-10">
+<h2 class="font-headline-lg text-headline-lg mb-4">The Global Safety Crisis</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 max-w-lg">Over 1.3 million lives are lost annually on global roads. Traditional management systems are reactive, slow, and often blind to emerging hazards. We are here to change the narrative from response to prevention.</p>
+<div class="flex gap-8">
+<div>
+<div class="text-error font-display-lg text-display-lg">1.3M</div>
+<div class="font-label-md text-on-surface-variant uppercase">Annual Fatalities</div>
+</div>
+<div>
+<div class="text-primary font-display-lg text-display-lg">94%</div>
+<div class="font-label-md text-on-surface-variant uppercase">Human Error Related</div>
+</div>
+</div>
+</div>
+<div class="absolute right-[-10%] bottom-[-10%] w-2/3 h-2/3 opacity-20 pointer-events-none">
+<div class="w-full h-full bg-cover bg-center rounded-full" data-alt="A professional high-contrast map of a busy metropolitan intersection with red heat map overlays indicating high-risk zones. The style is clean, corporate SaaS, using a primary blue and white color palette with sharp lines and data visualization elements for an authoritative enterprise feel." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAkxrgjSAEN4Eu8_B01GWMnVpJ5FO-kJA3w5IX0x3uJVmMar4Rb3VL_HM8u1sKAKBzcxIzb2-VT1czWolS49OIJrVhxhpr6A7RM-nSo_q4U6rS8OfBxQISW_Z_ELgVP6N86KW_ORp1XSQ4G7G-ZbjtuDeSaTebXP_36wfs9_tmoMXQLZp1DCpdDko2IXnYB1tvDyEN_-80B-p5Kq9g1e0mLYvMcXZGU0URHXe5lTUSiu_4bEzz8ltcnvq8nqhplYfav3jPLVwNlphuG')"></div>
+</div>
+</div>
+<div class="col-span-12 md:col-span-4 bg-primary text-on-primary rounded-xl p-lg flex flex-col justify-end">
+<span class="material-symbols-outlined text-4xl mb-4" data-icon="warning">warning</span>
+<h3 class="font-headline-md text-headline-md mb-2">Reactive Isn't Enough</h3>
+<p class="font-body-sm text-body-sm opacity-90">Current systems only collect data after an accident occurs. Our AI analyzes near-misses and predictive behavioral patterns to stop accidents before they happen.</p>
+</div>
+</div>
+</section>
+<!-- Mission & Vision -->
+<section class="mb-xl grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="p-lg bg-white border border-outline-variant rounded-xl shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-12 h-12 bg-secondary-container text-on-secondary-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="rocket_launch">rocket_launch</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg">Our Mission</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">To empower governments and logistics leaders with real-time, predictive intelligence that transforms the world's most dangerous roads into precision-managed safe zones. We leverage machine learning to provide actionable insights for a more resilient urban future.</p>
+</div>
+<div class="p-lg bg-white border border-outline-variant rounded-xl shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-12 h-12 bg-tertiary-container text-on-tertiary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg">Our Vision</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">A world where road fatalities are a relic of the past. We envision a global neural network of intelligent roads that communicate, predict, and adapt—ensuring every journey is secure, efficient, and autonomous-ready.</p>
+</div>
+</section>
+<!-- Timeline Section -->
+<section class="mb-xl max-w-4xl mx-auto">
+<div class="text-center mb-lg">
+<h2 class="font-headline-lg text-headline-lg mb-2">Our Journey</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Defining milestones in the evolution of safety intelligence.</p>
+</div>
+<div class="relative py-8">
+<!-- Vertical Line -->
+<div class="absolute left-1/2 transform -translate-x-1/2 h-full timeline-line hidden md:block"></div>
+<!-- Milestone 1 -->
+<div class="flex flex-col md:flex-row items-center mb-16 relative">
+<div class="flex-1 text-right pr-12 hidden md:block">
+<h4 class="font-headline-md text-headline-md text-primary">2021</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">RoadMind AI Founded in Zurich</p>
+</div>
+<div class="z-10 w-10 h-10 bg-white border-4 border-primary rounded-full flex items-center justify-center">
+<span class="w-2 h-2 bg-primary rounded-full"></span>
+</div>
+<div class="flex-1 md:pl-12 text-center md:text-left mt-4 md:mt-0">
+<span class="md:hidden font-headline-md text-headline-md text-primary block mb-1">2021</span>
+<h4 class="font-body-lg font-bold mb-2">The Genesis</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">A team of computer vision engineers and civil experts united to tackle the lack of data in municipal safety planning.</p>
+</div>
+</div>
+<!-- Milestone 2 -->
+<div class="flex flex-col md:flex-row items-center mb-16 relative">
+<div class="flex-1 md:pr-12 text-center md:text-right order-2 md:order-1 mt-4 md:mt-0">
+<span class="md:hidden font-headline-md text-headline-md text-primary block mb-1">2022</span>
+<h4 class="font-body-lg font-bold mb-2">v1.0 Alpha Launch</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Deployed first pilot program across 40 intersections in Berlin, reducing near-misses by 34% within 6 months.</p>
+</div>
+<div class="z-10 w-10 h-10 bg-white border-4 border-secondary rounded-full flex items-center justify-center order-1 md:order-2">
+<span class="w-2 h-2 bg-secondary rounded-full"></span>
+</div>
+<div class="flex-1 pl-12 hidden md:block order-3">
+<h4 class="font-headline-md text-headline-md text-secondary">2022</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">First Major Pilot Program</p>
+</div>
+</div>
+<!-- Milestone 3 -->
+<div class="flex flex-col md:flex-row items-center mb-16 relative">
+<div class="flex-1 text-right pr-12 hidden md:block">
+<h4 class="font-headline-md text-headline-md text-tertiary">2023</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Global Expansion</p>
+</div>
+<div class="z-10 w-10 h-10 bg-white border-4 border-tertiary rounded-full flex items-center justify-center">
+<span class="w-2 h-2 bg-tertiary rounded-full"></span>
+</div>
+<div class="flex-1 md:pl-12 text-center md:text-left mt-4 md:mt-0">
+<span class="md:hidden font-headline-md text-headline-md text-tertiary block mb-1">2023</span>
+<h4 class="font-body-lg font-bold mb-2">Series B &amp; Smart Cities</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Raised $140M to scale hardware production. Partnered with 12 international capitals to integrate RoadMind AI into their 2030 safety agendas.</p>
+</div>
+</div>
+<!-- Milestone 4 -->
+<div class="flex flex-col md:flex-row items-center relative">
+<div class="flex-1 md:pr-12 text-center md:text-right order-2 md:order-1 mt-4 md:mt-0">
+<span class="md:hidden font-headline-md text-headline-md text-primary block mb-1">Present</span>
+<h4 class="font-body-lg font-bold mb-2">Predictive Core™ 2.0</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Launch of our most advanced neural engine, capable of sub-second hazard prediction across entire city grids.</p>
+</div>
+<div class="z-10 w-12 h-12 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center order-1 md:order-2 shadow-lg">
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div class="flex-1 pl-12 hidden md:block order-3">
+<h4 class="font-headline-md text-headline-md text-primary">Present</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Setting New Standards</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="bg-surface-container-highest rounded-xl p-xl text-center">
+<h2 class="font-display-lg text-display-lg mb-6">Join the Safety Revolution</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-lg max-w-2xl mx-auto">Are you a government official, urban planner, or fleet manager? Let's build a safer infrastructure together.</p>
+<div class="flex flex-wrap justify-center gap-4">
+<button class="bg-primary text-on-primary font-label-md px-8 py-4 rounded-lg hover:shadow-xl transition-all">Request Enterprise Demo</button>
+<button class="bg-white border border-outline-variant text-on-surface font-label-md px-8 py-4 rounded-lg hover:bg-surface-container-low transition-all">Download Safety Whitepaper</button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest dark:bg-inverse-surface border-t border-outline-variant dark:border-outline full-width">
+<div class="flex flex-col md:flex-row justify-between items-center px-gutter py-lg w-full max-w-container-max mx-auto gap-8">
+<div class="flex flex-col gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface dark:text-inverse-on-surface font-bold">RoadMind AI</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant dark:text-on-surface-variant">© 2024 RoadMind AI. All rights reserved.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-opacity hover:underline" href="#">Sitemap</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-opacity hover:underline" href="#">Privacy Policy</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-opacity hover:underline" href="#">Terms of Service</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-opacity hover:underline" href="#">Security</a>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" data-icon="language">language</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" data-icon="share">share</span>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions for smooth revealing of timeline
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.2
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                        entry.target.classList.remove('opacity-0', 'translate-y-10');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.timeline-line + div, section').forEach(el => {
+                el.classList.add('transition-all', 'duration-700', 'ease-out', 'opacity-0', 'translate-y-10');
+                observer.observe(el);
+            });
+        });
+    </script>
+</body></html>

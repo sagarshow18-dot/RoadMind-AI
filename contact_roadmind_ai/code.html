@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact Us | RoadMind AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#727785",
+                        "surface-tint": "#005bc0",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#c55500",
+                        "surface": "#faf9fd",
+                        "secondary": "#005ac1",
+                        "on-secondary-fixed": "#001a41",
+                        "surface-bright": "#faf9fd",
+                        "on-surface": "#1a1b1e",
+                        "inverse-primary": "#adc7ff",
+                        "on-primary-container": "#ffffff",
+                        "surface-container-high": "#e9e7eb",
+                        "inverse-on-surface": "#f1f0f4",
+                        "tertiary-fixed": "#ffdbcb",
+                        "surface-dim": "#dbd9dd",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-highest": "#e3e2e6",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#001a41",
+                        "on-primary-fixed-variant": "#004493",
+                        "primary-fixed": "#d8e2ff",
+                        "on-surface-variant": "#414754",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb691",
+                        "secondary-container": "#4d8efe",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "on-tertiary-fixed-variant": "#783100",
+                        "tertiary": "#9e4300",
+                        "primary-fixed-dim": "#adc7ff",
+                        "secondary-fixed": "#d8e2ff",
+                        "on-background": "#1a1b1e",
+                        "surface-variant": "#e3e2e6",
+                        "on-secondary-container": "#00285c",
+                        "surface-container-low": "#f4f3f7",
+                        "primary": "#005bbf",
+                        "outline-variant": "#c1c6d6",
+                        "surface-container": "#efedf1",
+                        "on-tertiary-container": "#0e0200",
+                        "background": "#faf9fd",
+                        "on-secondary-fixed-variant": "#004494",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#2f3033",
+                        "on-error": "#ffffff",
+                        "primary-container": "#1a73e8",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#341100"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "xl": "48px",
+                        "lg": "32px",
+                        "md": "24px",
+                        "xs": "8px",
+                        "gutter": "24px",
+                        "sm": "16px",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "code": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "code": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .faq-accordion[open] .faq-icon { transform: rotate(180deg); }
+        .faq-icon { transition: transform 0.2s ease; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="bg-surface docked full-width top-0 sticky z-50 border-b border-outline-variant">
+<div class="flex justify-between items-center px-gutter py-md w-full max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-primary">RoadMind AI</div>
+<nav class="hidden md:flex gap-lg items-center">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Home</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Features</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">AI Workflow</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Dashboard</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Map</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Analytics</a>
+</nav>
+<div class="flex items-center gap-md">
+<button class="font-body-md text-body-md text-on-surface-variant hover:text-primary">Login</button>
+<button class="bg-primary-container text-on-primary-container px-lg py-sm rounded-lg font-body-md text-body-md font-semibold hover:opacity-90 transition-all active:scale-95">Get Started</button>
+</div>
+</div>
+</header>
+<main class="flex-grow w-full max-w-container-max mx-auto px-gutter py-xl">
+<!-- Hero Section -->
+<div class="mb-xl max-w-3xl">
+<h1 class="font-display-lg text-display-lg text-on-surface mb-sm">Let’s secure the roads together.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Our team of road safety experts and AI engineers are ready to help your agency leverage predictive data for a safer tomorrow.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-xl mb-xl">
+<!-- Contact Form Left -->
+<div class="lg:col-span-7 bg-surface-container-lowest border border-outline-variant rounded-xl p-lg shadow-sm">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-lg">Send us a message</h2>
+<form class="space-y-md">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Full Name</label>
+<input class="bg-surface border border-outline-variant rounded-lg px-md py-sm focus:ring-2 focus:ring-primary focus:outline-none transition-all" placeholder="John Doe" type="text"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Work Email</label>
+<input class="bg-surface border border-outline-variant rounded-lg px-md py-sm focus:ring-2 focus:ring-primary focus:outline-none transition-all" placeholder="john@agency.gov" type="email"/>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Organization</label>
+<input class="bg-surface border border-outline-variant rounded-lg px-md py-sm focus:ring-2 focus:ring-primary focus:outline-none transition-all" placeholder="Department of Transportation" type="text"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Subject</label>
+<select class="bg-surface border border-outline-variant rounded-lg px-md py-sm focus:ring-2 focus:ring-primary focus:outline-none transition-all">
+<option>Enterprise Safety Solutions</option>
+<option>Technical Support</option>
+<option>Partnership Inquiry</option>
+<option>Media &amp; Press</option>
+</select>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Message</label>
+<textarea class="bg-surface border border-outline-variant rounded-lg px-md py-sm focus:ring-2 focus:ring-primary focus:outline-none transition-all resize-none" placeholder="Tell us about your road safety goals..." rows="5"></textarea>
+</div>
+<button class="w-full bg-primary text-on-primary font-body-md text-body-md font-bold py-md rounded-lg shadow-sm hover:brightness-110 transition-all active:scale-[0.98]" type="submit">
+                        Submit Inquiry
+                    </button>
+</form>
+</div>
+<!-- Offices & Info Right -->
+<div class="lg:col-span-5 space-y-lg">
+<section>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-md">Our Global Hubs</h3>
+<div class="space-y-md">
+<!-- Office Card -->
+<div class="group p-md border border-outline-variant rounded-xl hover:bg-surface-container-low transition-colors duration-200">
+<div class="flex items-start gap-md">
+<span class="material-symbols-outlined text-primary" data-icon="location_on">location_on</span>
+<div>
+<h4 class="font-body-md text-body-md font-bold text-on-surface">San Francisco HQ</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">450 Safety Boulevard, Suite 1200<br/>San Francisco, CA 94105</p>
+</div>
+</div>
+</div>
+<!-- Office Card -->
+<div class="group p-md border border-outline-variant rounded-xl hover:bg-surface-container-low transition-colors duration-200">
+<div class="flex items-start gap-md">
+<span class="material-symbols-outlined text-primary" data-icon="location_on">location_on</span>
+<div>
+<h4 class="font-body-md text-body-md font-bold text-on-surface">London Operations</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">88 Intelligent Way, Canary Wharf<br/>London, E14 5AA, UK</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-md">Direct Contact</h3>
+<div class="space-y-sm">
+<a class="flex items-center gap-md text-on-surface-variant hover:text-primary transition-colors" href="mailto:contact@roadmind.ai">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+<span class="font-body-md text-body-md">contact@roadmind.ai</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant hover:text-primary transition-colors" href="tel:+1800ROADSAFE">
+<span class="material-symbols-outlined" data-icon="call">call</span>
+<span class="font-body-md text-body-md">+1 (800) ROAD-SAFE</span>
+</a>
+</div>
+</section>
+<section>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-md">Connect With Us</h3>
+<div class="flex gap-md">
+<a class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-on-surface-variant hover:bg-primary-container hover:text-on-primary-container hover:border-transparent transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+</a>
+<a class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-on-surface-variant hover:bg-primary-container hover:text-on-primary-container hover:border-transparent transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="public">public</span>
+</a>
+<a class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-on-surface-variant hover:bg-primary-container hover:text-on-primary-container hover:border-transparent transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+</a>
+</div>
+</section>
+</div>
+</div>
+<!-- FAQ Section -->
+<section class="max-w-4xl mx-auto py-xl border-t border-outline-variant">
+<h2 class="font-headline-lg text-headline-lg text-center text-on-surface mb-xl">Frequently Asked Questions</h2>
+<div class="space-y-sm">
+<details class="faq-accordion group bg-surface-container-low rounded-xl overflow-hidden border border-transparent hover:border-outline-variant transition-all">
+<summary class="flex justify-between items-center p-md cursor-pointer list-none">
+<span class="font-body-lg text-body-lg font-semibold text-on-surface">How does RoadMind AI protect our data?</span>
+<span class="faq-icon material-symbols-outlined text-primary" data-icon="expand_more">expand_more</span>
+</summary>
+<div class="px-md pb-md">
+<p class="font-body-md text-body-md text-on-surface-variant">We utilize enterprise-grade AES-256 encryption for all data at rest and TLS 1.3 for data in transit. Our infrastructure is SOC 2 Type II compliant, ensuring your agency's information is handled with the highest security standards.</p>
+</div>
+</details>
+<details class="faq-accordion group bg-surface-container-low rounded-xl overflow-hidden border border-transparent hover:border-outline-variant transition-all">
+<summary class="flex justify-between items-center p-md cursor-pointer list-none">
+<span class="font-body-lg text-body-lg font-semibold text-on-surface">Can we integrate with existing IoT infrastructure?</span>
+<span class="faq-icon material-symbols-outlined text-primary" data-icon="expand_more">expand_more</span>
+</summary>
+<div class="px-md pb-md">
+<p class="font-body-md text-body-md text-on-surface-variant">Yes. RoadMind AI is designed with an API-first philosophy. We support standard MQTT and RESTful protocols to ingest data from existing traffic sensors, weather stations, and connected vehicle fleets.</p>
+</div>
+</details>
+<details class="faq-accordion group bg-surface-container-low rounded-xl overflow-hidden border border-transparent hover:border-outline-variant transition-all">
+<summary class="flex justify-between items-center p-md cursor-pointer list-none">
+<span class="font-body-lg text-body-lg font-semibold text-on-surface">What is the typical deployment timeline?</span>
+<span class="faq-icon material-symbols-outlined text-primary" data-icon="expand_more">expand_more</span>
+</summary>
+<div class="px-md pb-md">
+<p class="font-body-md text-body-md text-on-surface-variant">Standard cloud deployments take between 2 to 4 weeks, including initial model training on your historical data. On-premise or edge-computing solutions may require additional time for hardware calibration.</p>
+</div>
+</details>
+</div>
+</section>
+<!-- Map Section / Visual Anchor -->
+<section class="mt-xl rounded-xl overflow-hidden h-[400px] border border-outline-variant">
+<div class="w-full h-full relative">
+<div class="absolute inset-0 bg-surface-dim flex items-center justify-center" data-location="San Francisco" style="">
+<img class="w-full h-full object-cover grayscale opacity-80 mix-blend-multiply" data-alt="A professional, clean, and minimalist vector-style map of San Francisco showing major road networks with subtle blue glowing data overlays. The aesthetic is high-tech corporate SaaS, using a light mode color palette of whites, light greys, and primary blue accents. The map has a soft ambient shadow and feels integrated into a premium enterprise software interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnQ0rn_2p_YJeWuRKa58LIdE5VQphyoSbnrkRW5rYp-neYI4QyX_bms68bQllEFSEyZD52gV9rJk27JqrTfXHXrcbGxQ7ii3VI0DsitJadTd832IzRLyD1pao48hAdSaERYcfZY2NPbzloscMJJH5W2R8tg2GNXqwMS5W7uJB289PCz4j-AEq5Aw-fKGxK2Qg-RxMFMg2-zsdEmhhgNkWemFrflNnVAAWo_IWlq4lWsp7Cww1kimOcKzbhhwT4yZSL_SW8IxNSbAan"/>
+</div>
+<div class="absolute bottom-md left-md bg-surface-container-lowest p-md rounded-lg shadow-xl border border-outline-variant max-w-xs">
+<p class="font-label-md text-label-md text-primary font-bold uppercase tracking-wider mb-xs">Visit Us</p>
+<p class="font-body-sm text-body-sm text-on-surface">Our headquarters are located in the heart of San Francisco's tech district.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest full-width border-t border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-center px-gutter py-lg w-full max-w-container-max mx-auto gap-md">
+<div class="flex flex-col items-center md:items-start">
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold mb-xs">RoadMind AI</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">© 2024 RoadMind AI. All rights reserved.</p>
+</div>
+<div class="flex gap-lg">
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:underline transition-opacity" href="#">Sitemap</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:underline transition-opacity" href="#">Privacy Policy</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:underline transition-opacity" href="#">Terms of Service</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:underline transition-opacity" href="#">Security</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction for form button
+        const form = document.querySelector('form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerText;
+            btn.innerText = 'Sending...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.innerText = 'Message Sent Successfully';
+                btn.classList.replace('bg-primary', 'bg-green-600');
+                form.reset();
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.classList.replace('bg-green-600', 'bg-primary');
+                    btn.disabled = false;
+                }, 3000);
+            }, 1500);
+        });
+
+        // FAQ exclusive accordion logic (optional: only one open at a time)
+        const details = document.querySelectorAll('details');
+        details.forEach((targetDetail) => {
+            targetDetail.addEventListener('click', () => {
+                details.forEach((detail) => {
+                    if (detail !== targetDetail) {
+                        detail.removeAttribute('open');
+                    }
+                });
+            });
+        });
+    </script>
+</body></html>

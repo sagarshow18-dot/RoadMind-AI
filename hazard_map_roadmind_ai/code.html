@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hazard Map | RoadMind AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline": "#727785",
+                      "surface-tint": "#005bc0",
+                      "on-primary": "#ffffff",
+                      "tertiary-container": "#c55500",
+                      "surface": "#faf9fd",
+                      "secondary": "#005ac1",
+                      "on-secondary-fixed": "#001a41",
+                      "surface-bright": "#faf9fd",
+                      "on-surface": "#1a1b1e",
+                      "inverse-primary": "#adc7ff",
+                      "on-primary-container": "#ffffff",
+                      "surface-container-high": "#e9e7eb",
+                      "inverse-on-surface": "#f1f0f4",
+                      "tertiary-fixed": "#ffdbcb",
+                      "surface-dim": "#dbd9dd",
+                      "on-tertiary": "#ffffff",
+                      "surface-container-highest": "#e3e2e6",
+                      "on-secondary": "#ffffff",
+                      "on-primary-fixed": "#001a41",
+                      "on-primary-fixed-variant": "#004493",
+                      "primary-fixed": "#d8e2ff",
+                      "on-surface-variant": "#414754",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed-dim": "#ffb691",
+                      "secondary-container": "#4d8efe",
+                      "on-error-container": "#93000a",
+                      "secondary-fixed-dim": "#adc6ff",
+                      "on-tertiary-fixed-variant": "#783100",
+                      "tertiary": "#9e4300",
+                      "primary-fixed-dim": "#adc7ff",
+                      "secondary-fixed": "#d8e2ff",
+                      "on-background": "#1a1b1e",
+                      "surface-variant": "#e3e2e6",
+                      "on-secondary-container": "#00285c",
+                      "surface-container-low": "#f4f3f7",
+                      "primary": "#005bbf",
+                      "outline-variant": "#c1c6d6",
+                      "surface-container": "#efedf1",
+                      "on-tertiary-container": "#0e0200",
+                      "background": "#faf9fd",
+                      "on-secondary-fixed-variant": "#004494",
+                      "error-container": "#ffdad6",
+                      "inverse-surface": "#2f3033",
+                      "on-error": "#ffffff",
+                      "primary-container": "#1a73e8",
+                      "error": "#ba1a1a",
+                      "on-tertiary-fixed": "#341100"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "base": "4px",
+                      "xl": "48px",
+                      "lg": "32px",
+                      "md": "24px",
+                      "xs": "8px",
+                      "gutter": "24px",
+                      "sm": "16px",
+                      "container-max": "1440px"
+              },
+              "fontFamily": {
+                      "headline-lg-mobile": ["Inter"],
+                      "label-md": ["Inter"],
+                      "body-sm": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "code": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "code": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; overflow: hidden; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .map-container {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            background-color: #111827;
+        }
+        /* Custom scrollbar for clean enterprise look */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+
+        .hazard-pulse {
+            animation: pulse-animation 2s infinite;
+        }
+        @keyframes pulse-animation {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background">
+<!-- Shell Container -->
+<div class="flex h-screen overflow-hidden">
+<!-- SideNavBar - JSON Anchor Implementation -->
+<aside class="fixed left-0 top-0 h-full w-[256px] bg-surface-container-low border-r border-outline-variant z-50 flex flex-col py-md px-sm">
+<div class="mb-lg px-xs">
+<h1 class="font-headline-md text-headline-md text-on-surface font-bold">RoadMind AI</h1>
+<p class="font-label-md text-label-md text-on-surface-variant opacity-70">Enterprise Safety</p>
+</div>
+<nav class="flex-grow space-y-1">
+<!-- Navigation Mapping from JSON -->
+<a class="flex items-center gap-sm px-sm py-xs rounded-lg transition-all text-on-surface-variant hover:bg-surface-container-high font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                    Overview
+                </a>
+<!-- Active Tab: Hazard Map -->
+<a class="flex items-center gap-sm px-sm py-xs rounded-lg transition-all bg-secondary-container text-on-secondary-container font-bold translate-x-1 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">map</span>
+                    Hazard Map
+                </a>
+<a class="flex items-center gap-sm px-sm py-xs rounded-lg transition-all text-on-surface-variant hover:bg-surface-container-high font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">query_stats</span>
+                    Predictive Analytics
+                </a>
+<a class="flex items-center gap-sm px-sm py-xs rounded-lg transition-all text-on-surface-variant hover:bg-surface-container-high font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">local_shipping</span>
+                    Vehicle Tracking
+                </a>
+<a class="flex items-center gap-sm px-sm py-xs rounded-lg transition-all text-on-surface-variant hover:bg-surface-container-high font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">settings_suggest</span>
+                    System Health
+                </a>
+<a class="flex items-center gap-sm px-sm py-xs rounded-lg transition-all text-on-surface-variant hover:bg-surface-container-high font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">settings</span>
+                    Settings
+                </a>
+</nav>
+<div class="mt-auto space-y-md">
+<button class="w-full py-sm bg-error text-on-error rounded-xl font-label-md text-label-md font-bold flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">emergency_share</span>
+                    Emergency Alert
+                </button>
+<div class="pt-md border-t border-outline-variant space-y-1">
+<a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">help</span>
+                        Help Center
+                    </a>
+<a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">logout</span>
+                        Log Out
+                    </a>
+</div>
+</div>
+</aside>
+<!-- Main Content Area (Offset for Sidebar) -->
+<main class="ml-[256px] flex-grow relative h-screen">
+<!-- Dark Mode Map Canvas -->
+<div class="absolute inset-0 z-0 map-container" data-location="San Francisco" style="">
+<div class="w-full h-full bg-cover bg-center opacity-80 mix-blend-screen" data-alt="A high-fidelity dark-themed satellite map of a metropolitan area at night, featuring glowing turquoise and electric blue street lines. The visual style is premium enterprise SaaS with a clean, vector-like aesthetic. Minimalist iconography and subtle data overlays represent traffic flow and urban density in a sophisticated, tech-centric palette of deep navy and charcoal." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBDay-fBGtp48DZ6bl9wHy51bOjcEYvIy4MTg3w0m0bdi_yWeHYeLEZQE3Kk8pX-D_wRdy_9PeIZAjeYpG5N5Giv5eyOdJEMAtqA3Qx2vFR7okh6pQ3_EHrOAmmYWJf8BU1cThnhNAjYhom1lPjjdS1Pt5OP8jjgdVo3bUd6wQKY2u5G55O-YajAMutRvf3cDXvLPz7TKFXOaJIdy-w8Eq5jA9LhuXdwPNdEnu_whGd74HmQYdp-wBQ0EeoDuY8tTnlJekmBObbrpUg')"></div>
+<!-- Interactive Markers (Simulated) -->
+<!-- Pothole Marker -->
+<div class="absolute top-[35%] left-[45%] z-10 cursor-pointer group" onclick="toggleDetails('pothole-1')">
+<div class="bg-error w-4 h-4 rounded-full border-2 border-white shadow-xl hazard-pulse"></div>
+<div class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-surface text-on-surface px-2 py-1 rounded text-[10px] font-bold shadow-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Severe Pothole</div>
+</div>
+<!-- Construction Marker -->
+<div class="absolute top-[50%] left-[60%] z-10 cursor-pointer group" onclick="toggleDetails('construction-1')">
+<div class="bg-tertiary w-4 h-4 rounded-full border-2 border-white shadow-xl"></div>
+<div class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-surface text-on-surface px-2 py-1 rounded text-[10px] font-bold shadow-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Road Work (24h)</div>
+</div>
+<!-- Animal Marker -->
+<div class="absolute top-[42%] left-[30%] z-10 cursor-pointer group" onclick="toggleDetails('animal-1')">
+<div class="bg-primary w-4 h-4 rounded-full border-2 border-white shadow-xl"></div>
+<div class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-surface text-on-surface px-2 py-1 rounded text-[10px] font-bold shadow-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Wildfire Warning</div>
+</div>
+</div>
+<!-- Header Over Map -->
+<div class="absolute top-0 left-0 right-0 p-lg z-20 flex justify-between items-start pointer-events-none">
+<div class="pointer-events-auto">
+<div class="bg-surface/90 backdrop-blur-md border border-outline-variant px-md py-sm rounded-xl shadow-lg">
+<div class="flex items-center gap-sm">
+<div class="flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+<span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Live System</span>
+</div>
+<div class="w-px h-4 bg-outline-variant"></div>
+<h2 class="font-headline-md text-[18px] font-bold text-on-surface">San Francisco Region</h2>
+</div>
+</div>
+</div>
+<div class="flex gap-sm pointer-events-auto">
+<div class="bg-surface/90 backdrop-blur-md border border-outline-variant p-xs rounded-xl shadow-lg flex gap-xs">
+<button class="p-xs hover:bg-surface-container-high rounded-lg transition-colors"><span class="material-symbols-outlined">zoom_in</span></button>
+<button class="p-xs hover:bg-surface-container-high rounded-lg transition-colors"><span class="material-symbols-outlined">zoom_out</span></button>
+</div>
+<button class="bg-primary text-on-primary px-md py-sm rounded-xl font-bold shadow-lg flex items-center gap-xs">
+<span class="material-symbols-outlined">layers</span>
+                        View Layers
+                    </button>
+</div>
+</div>
+<!-- Floating Filter Panel (Left) -->
+<div class="absolute left-lg top-[100px] w-72 z-30 pointer-events-none">
+<div class="bg-surface/95 backdrop-blur-xl border border-outline-variant rounded-2xl shadow-2xl p-md pointer-events-auto">
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-label-md text-label-md font-bold text-on-surface-variant uppercase tracking-widest">Filters</h3>
+<button class="text-primary font-label-md text-label-md font-bold">Reset</button>
+</div>
+<div class="space-y-sm">
+<!-- Potholes -->
+<label class="flex items-center justify-between p-sm rounded-xl border border-outline-variant/30 hover:bg-surface-container-low cursor-pointer transition-all group">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-lg bg-error-container flex items-center justify-center text-error">
+<span class="material-symbols-outlined">dangerous</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface">Potholes</p>
+<p class="text-[11px] text-on-surface-variant">14 Active Reports</p>
+</div>
+</div>
+<input checked="" class="rounded-full w-5 h-5 text-primary focus:ring-primary border-outline-variant" type="checkbox"/>
+</label>
+<!-- Construction -->
+<label class="flex items-center justify-between p-sm rounded-xl border border-outline-variant/30 hover:bg-surface-container-low cursor-pointer transition-all group">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-lg bg-tertiary-fixed flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">construction</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface">Construction</p>
+<p class="text-[11px] text-on-surface-variant">8 Active Sites</p>
+</div>
+</div>
+<input checked="" class="rounded-full w-5 h-5 text-primary focus:ring-primary border-outline-variant" type="checkbox"/>
+</label>
+<!-- Animals -->
+<label class="flex items-center justify-between p-sm rounded-xl border border-outline-variant/30 hover:bg-surface-container-low cursor-pointer transition-all group">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-lg bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">pets</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface">Animals</p>
+<p class="text-[11px] text-on-surface-variant">3 Wildlife Crossings</p>
+</div>
+</div>
+<input checked="" class="rounded-full w-5 h-5 text-primary focus:ring-primary border-outline-variant" type="checkbox"/>
+</label>
+</div>
+<div class="mt-md pt-md border-t border-outline-variant">
+<p class="font-label-md text-label-md font-bold text-on-surface-variant mb-sm">Timeframe</p>
+<select class="w-full bg-surface-container border border-outline-variant rounded-xl p-sm font-body-sm text-body-sm focus:ring-primary focus:border-primary">
+<option>Last 24 Hours</option>
+<option>Last 7 Days</option>
+<option>Custom Range</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Detailed Hazard Info Panel (Right) -->
+<div class="absolute right-lg top-lg bottom-lg w-96 z-40 translate-x-[120%] transition-transform duration-500 ease-in-out pointer-events-none" id="info-panel">
+<div class="h-full bg-surface/98 backdrop-blur-2xl border border-outline-variant rounded-3xl shadow-2xl flex flex-col pointer-events-auto overflow-hidden">
+<div class="p-md border-b border-outline-variant flex justify-between items-center">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-error">warning</span>
+<h3 class="font-headline-md text-[18px] font-bold">Hazard Details</h3>
+</div>
+<button class="p-xs hover:bg-surface-container-high rounded-full transition-colors" onclick="closeDetails()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="flex-grow overflow-y-auto p-md space-y-lg">
+<!-- Hazard Image/Preview -->
+<div class="relative w-full h-48 rounded-2xl overflow-hidden bg-surface-dim">
+<div class="w-full h-full bg-cover bg-center" data-alt="A professional close-up photograph of a significant asphalt pothole on a rainy city street. The lighting is dramatic and cinematic, emphasizing the texture of the cracked pavement and the reflection in the water puddles. The composition is clean and technical, suitable for a smart city infrastructure dashboard with a modern enterprise aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBF_zsqPsKejIUcNeh-F0Hs9VNiV2bh22zGWJbMEXfPqYGHkpKNUiAgy5bFyjH1UOFuZhnBv5TeumtEKzrnMgxTr8vWxtZLMjLDqj08wkRp_PDA_g_DHATRg9kDaP9Pvw_K3J46Jqlp5o7I5Yv3NebpwAqxZiWj33gPfGsHC7VvlWOzpqDa8IhkM9ya4nZwPAKubWULE6eBVc1GS9ShC163Gddwmg7Ka6s5XSdtFd5pQRuYgXap8arpPMTScjeTJui6HscvaYylBsev')"></div>
+<div class="absolute top-sm right-sm bg-error text-on-error px-sm py-xs rounded-full text-[10px] font-bold uppercase tracking-widest shadow-lg">High Severity</div>
+</div>
+<div>
+<h4 class="font-headline-md text-[20px] font-extrabold text-on-surface mb-xs">Structural Pothole #842</h4>
+<div class="flex items-center gap-xs text-on-surface-variant mb-md">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+<p class="text-body-sm font-body-sm">Market St & 4th St, San Francisco</p>
+</div>
+<div class="grid grid-cols-2 gap-sm">
+<div class="bg-surface-container-low p-sm rounded-xl">
+<p class="text-[10px] uppercase font-bold text-on-surface-variant mb-xs">Detected</p>
+<p class="font-label-md text-label-md text-on-surface">14 mins ago</p>
+</div>
+<div class="bg-surface-container-low p-sm rounded-xl">
+<p class="text-[10px] uppercase font-bold text-on-surface-variant mb-xs">Confidence</p>
+<p class="font-label-md text-label-md text-on-surface">98.2% AI Acc.</p>
+</div>
+</div>
+</div>
+<div class="space-y-sm">
+<p class="font-label-md text-label-md font-bold text-on-surface-variant uppercase">Hazard Metrics</p>
+<div class="space-y-xs">
+<div class="flex justify-between items-center text-body-sm">
+<span>Estimated Depth</span>
+<span class="font-bold">4.2 in</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-error rounded-full" style="width: 75%"></div>
+</div>
+</div>
+<div class="space-y-xs">
+<div class="flex justify-between items-center text-body-sm">
+<span>Traffic Impact</span>
+<span class="font-bold">Moderate</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-tertiary rounded-full" style="width: 45%"></div>
+</div>
+</div>
+</div>
+<div class="pt-md border-t border-outline-variant">
+<p class="font-label-md text-label-md font-bold text-on-surface-variant uppercase mb-sm">AI Recommendation</p>
+<div class="bg-primary-container/10 border border-primary-container/20 p-md rounded-2xl">
+<p class="text-body-sm text-on-surface leading-relaxed italic">
+                                    "Dispatch maintenance crew within 4 hours. High risk of tire damage for lightweight vehicles. Suggest autonomous rerouting for fleet vehicles."
+                                </p>
+</div>
+</div>
+</div>
+<div class="p-md bg-surface-container-low border-t border-outline-variant space-y-sm">
+<button class="w-full py-md bg-primary text-on-primary rounded-xl font-bold transition-transform active:scale-95 shadow-md">Dispatch Maintenance</button>
+<button class="w-full py-md bg-surface border border-outline-variant text-on-surface rounded-xl font-bold hover:bg-surface-container-high transition-all">Mark as Resolved</button>
+</div>
+</div>
+</div>
+<!-- Mini Map Zoom Controller -->
+<div class="absolute bottom-lg left-lg z-30">
+<div class="bg-surface/90 backdrop-blur-md border border-outline-variant rounded-2xl p-sm shadow-2xl">
+<div class="w-32 h-32 rounded-xl overflow-hidden mb-sm border border-outline-variant relative">
+<div class="w-full h-full bg-cover" data-alt="A small, stylized architectural map view of a city grid with glowing neon orange and white lines, representing a secondary navigation or minimap for a high-tech control center. Sophisticated grid patterns and digital noise overlays create a professional data visualization look." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDwGPcBd4XY87I_I9D40bSbjC72UeXSF0ywh6qwoc3qbrav-f6h35xqJ7XWS9Zr4qdAeVT8LD9ySxE-s_1rTNtDOC1ukFJJ8AoXeoAE6FYMLafykS1r-jeGk0Jm6pa2l9fM2WLLYSWu9CscU15Sd1HDsZfeIPz-YhII4DD49eNG4t71wuaHLHLjQ1EAqDeeneZaRjIlU_RPFjp672ynxgt2fMU6_F7lBfQqupCo-Z7IgbuCrAvOqT2H-utfcSQBduKh1Ps9DP9HaQMm')"></div>
+<div class="absolute inset-0 ring-2 ring-primary ring-inset rounded-xl"></div>
+</div>
+<div class="flex justify-between items-center px-xs">
+<span class="text-[10px] font-bold text-on-surface-variant">MINIMAP</span>
+<span class="material-symbols-outlined text-[14px]">open_in_full</span>
+</div>
+</div>
+</div>
+<!-- Stats Bar (Bottom Center) -->
+<div class="absolute bottom-lg left-1/2 -translate-x-1/2 z-30 pointer-events-none">
+<div class="bg-inverse-surface text-inverse-on-surface px-lg py-sm rounded-full shadow-2xl flex items-center gap-lg border border-white/10 pointer-events-auto">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary-fixed">sensors</span>
+<span class="font-label-md text-label-md">2,410 Connected Nodes</span>
+</div>
+<div class="w-px h-6 bg-white/10"></div>
+<div class="flex items-center gap-xs text-error-container">
+<span class="material-symbols-outlined text-[18px]">warning</span>
+<span class="font-label-md text-label-md">25 Critical Alerts</span>
+</div>
+<div class="w-px h-6 bg-white/10"></div>
+<div class="flex items-center gap-xs text-secondary-fixed">
+<span class="material-symbols-outlined text-[18px]">update</span>
+<span class="font-label-md text-label-md">Live Syncing</span>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Micro-Interactions Script -->
+<script>
+        function toggleDetails(id) {
+            const panel = document.getElementById('info-panel');
+            panel.classList.remove('translate-x-[120%]');
+        }
+
+        function closeDetails() {
+            const panel = document.getElementById('info-panel');
+            panel.classList.add('translate-x-[120%]');
+        }
+
+        // Simulating some map movement or interaction responsiveness
+        document.addEventListener('mousemove', (e) => {
+            const map = document.querySelector('.map-container img');
+            if(map) {
+                const moveX = (e.clientX - window.innerWidth / 2) / 100;
+                const moveY = (e.clientY - window.innerHeight / 2) / 100;
+                map.style.transform = `scale(1.05) translate(${moveX}px, ${moveY}px)`;
+            }
+        });
+    </script>
+</body></html>

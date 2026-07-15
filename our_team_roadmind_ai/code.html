@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Team &amp; Careers | RoadMind AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#727785",
+                        "surface-tint": "#005bc0",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#c55500",
+                        "surface": "#faf9fd",
+                        "secondary": "#005ac1",
+                        "on-secondary-fixed": "#001a41",
+                        "surface-bright": "#faf9fd",
+                        "on-surface": "#1a1b1e",
+                        "inverse-primary": "#adc7ff",
+                        "on-primary-container": "#ffffff",
+                        "surface-container-high": "#e9e7eb",
+                        "inverse-on-surface": "#f1f0f4",
+                        "tertiary-fixed": "#ffdbcb",
+                        "surface-dim": "#dbd9dd",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-highest": "#e3e2e6",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#001a41",
+                        "on-primary-fixed-variant": "#004493",
+                        "primary-fixed": "#d8e2ff",
+                        "on-surface-variant": "#414754",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb691",
+                        "secondary-container": "#4d8efe",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "on-tertiary-fixed-variant": "#783100",
+                        "tertiary": "#9e4300",
+                        "primary-fixed-dim": "#adc7ff",
+                        "secondary-fixed": "#d8e2ff",
+                        "on-background": "#1a1b1e",
+                        "surface-variant": "#e3e2e6",
+                        "on-secondary-container": "#00285c",
+                        "surface-container-low": "#f4f3f7",
+                        "primary": "#005bbf",
+                        "outline-variant": "#c1c6d6",
+                        "surface-container": "#efedf1",
+                        "on-tertiary-container": "#0e0200",
+                        "background": "#faf9fd",
+                        "on-secondary-fixed-variant": "#004494",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#2f3033",
+                        "on-error": "#ffffff",
+                        "primary-container": "#1a73e8",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#341100"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "xl": "48px",
+                        "lg": "32px",
+                        "md": "24px",
+                        "xs": "8px",
+                        "gutter": "24px",
+                        "sm": "16px",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "code": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "code": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- TopNavBar -->
+<header class="bg-surface docked full-width top-0 sticky z-50 border-b border-outline-variant">
+<div class="flex justify-between items-center px-gutter py-sm w-full max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary text-3xl">route</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">RoadMind AI</span>
+</div>
+<nav class="hidden md:flex items-center gap-lg">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Home</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Features</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">AI Workflow</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Dashboard</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Map</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Analytics</a>
+</nav>
+<div class="flex items-center gap-sm">
+<button class="font-body-md text-body-md text-on-surface-variant hover:opacity-80 px-md py-xs">Login</button>
+<button class="bg-primary-container text-on-primary-container font-body-md text-body-md px-md py-xs rounded-lg hover:opacity-90 active:scale-95 transition-all">Get Started</button>
+</div>
+</div>
+</header>
+<main class="w-full">
+<!-- Hero Section -->
+<section class="relative py-xl bg-surface-container-low overflow-hidden">
+<div class="max-w-container-max mx-auto px-gutter relative z-10">
+<div class="max-w-3xl">
+<span class="font-label-md text-label-md text-primary bg-primary-fixed px-sm py-1 rounded-full mb-md inline-block">Join the Future of Safety</span>
+<h1 class="font-display-lg text-display-lg mb-md leading-tight">Engineering a world without road accidents.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-lg">RoadMind AI is scaling rapidly. We're looking for mission-driven engineers, designers, and visionaries to join our quest to digitize road safety through predictive intelligence.</p>
+<div class="flex gap-sm">
+<a class="bg-primary text-on-primary px-lg py-md rounded-xl font-body-md text-body-md flex items-center gap-2 hover:opacity-90 transition-all" href="#careers">
+                            View Openings <span class="material-symbols-outlined">arrow_downward</span>
+</a>
+<a class="border border-outline-variant text-on-surface px-lg py-md rounded-xl font-body-md text-body-md hover:bg-surface-container-high transition-all" href="#team">Meet the Team</a>
+</div>
+</div>
+</div>
+<!-- Atmospheric background element -->
+<div class="absolute right-0 top-0 w-1/2 h-full opacity-10 pointer-events-none">
+
+</div>
+</section>
+<!-- Milestones Section (Bento Grid Style) -->
+<section class="py-xl max-w-container-max mx-auto px-gutter">
+<h2 class="font-headline-lg text-headline-lg mb-xl text-center">Our Journey So Far</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<div class="bg-white p-lg rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow">
+<span class="text-primary font-display-lg text-display-lg block mb-xs">2021</span>
+<h3 class="font-headline-md text-headline-md mb-sm">The Spark</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Founded by a group of Stanford AI researchers and civil engineers with a vision to eliminate traffic fatalities through neural network traffic flow analysis.</p>
+</div>
+<div class="bg-primary text-on-primary p-lg rounded-xl border border-primary shadow-sm md:row-span-2 flex flex-col justify-between">
+<div>
+<span class="text-primary-fixed font-display-lg text-display-lg block mb-xs">50M+</span>
+<h3 class="font-headline-md text-headline-md mb-sm">Miles Analyzed</h3>
+<p class="font-body-sm text-body-sm opacity-90">In 2023, our V2X network reached a major scale milestone, processing over 50 million miles of real-time road data across 12 major metropolitan areas.</p>
+</div>
+<div class="mt-xl">
+<span class="material-symbols-outlined text-6xl">analytics</span>
+</div>
+</div>
+<div class="bg-white p-lg rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow">
+<span class="text-primary font-display-lg text-display-lg block mb-xs">2022</span>
+<h3 class="font-headline-md text-headline-md mb-sm">Series A</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Secured $24M in Series A funding led by top-tier climate-tech and infrastructure investors to accelerate global expansion.</p>
+</div>
+<div class="bg-surface-container-high p-lg rounded-xl border border-outline-variant shadow-sm md:col-span-1">
+<span class="text-primary font-display-lg text-display-lg block mb-xs">2024</span>
+<h3 class="font-headline-md text-headline-md mb-sm">Global Reach</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Partnered with 5 national transportation ministries to deploy predictive hazard detection at scale.</p>
+</div>
+</div>
+</section>
+<!-- Team Section -->
+<section class="py-xl bg-surface" id="team">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="text-center mb-xl">
+<h2 class="font-headline-lg text-headline-lg mb-sm">The Minds Behind RoadMind</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">A multidisciplinary team of world-class AI researchers, software architects, and urban planners working together to make roads safer for everyone.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-lg">
+<!-- Team Member 1 -->
+<div class="group">
+<div class="relative aspect-square rounded-xl overflow-hidden mb-md border border-outline-variant">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A professional headshot of a female executive with a confident smile, wearing a modern navy blazer. The background is a brightly lit, clean architectural space with soft blue and white highlights, consistent with an enterprise AI software corporate aesthetic. The lighting is crisp and cinematic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcTNankSTcf6cHWidbkyBkX1a7W4GLeYccCaGAnFOCCYNOZudnCIo7iW_Ql4ZuSEplJa4zAJU3jjY3oxWY2MCTJVImKYC9faF1Z1QVHZV55FUKASWMBAXAPfaH46-q2FUFssnFNH96i10tuuXvFsQhbYhGV_EPBG1oniAXwWNBX0Bp9BnKeK3_KWfuMjRf8kDvAQACy0iiN11382bMOQx6nh7YT4IbD7Rx6SJJgxN_5nwDau8JONIFKOU6VqQdPOpWADX5QsZj6xlB"/>
+</div>
+<h4 class="font-headline-sm text-headline-sm">Sarah Chen</h4>
+<p class="font-label-md text-label-md text-primary uppercase tracking-wider">CEO &amp; Co-Founder</p>
+</div>
+<!-- Team Member 2 -->
+<div class="group">
+<div class="relative aspect-square rounded-xl overflow-hidden mb-md border border-outline-variant">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A professional portrait of a male engineer in a grey tech-knit sweater, looking thoughtful. He is positioned in a modern minimalist office with large windows showing a hint of a futuristic city grid at dusk. The lighting is soft and neutral, maintaining a high-end SaaS corporate feel with a color palette of whites, grays, and deep blues." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPUBLAydGgtMRfbzAoq_dVd91zGkRQMtI18xk61zms0J08CZZ10-vYgVSREe6EGnXZ2rmK1DOHzH_IbdQCU4dmheP3OX8ETHwmD1H4BEqzjIQGzTr6JmaIM6Ygzt6JeLBcnbRhutPMxaPm9eHsRUiJ-2gCDmRBMIY-Ks9Y5iPSz_-bokJnTHI4ixG_jNlKH8DH_ToVm7W91ltbIBOgAxNtp7LUzZRYgBSQ_GONiUclLqcUUFqk3rjcYG6WHQNIE4By1xODcLsLA5vh"/>
+</div>
+<h4 class="font-headline-sm text-headline-sm">Marcus Thorne</h4>
+<p class="font-label-md text-label-md text-primary uppercase tracking-wider">CTO</p>
+</div>
+<!-- Team Member 3 -->
+<div class="group">
+<div class="relative aspect-square rounded-xl overflow-hidden mb-md border border-outline-variant">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A professional headshot of a diverse female leader with glasses and a warm expression, wearing a cream-colored professional blouse. Background is a blurred data center with subtle neon blue light trails, emphasizing a technologically advanced and reliable environment. The visual style is polished, modern, and corporate." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOgAfnuVn3YbvxGiPvKa5t8eRbQ3Vp8wzLZD-GZfnqLnsxT4TM8Lg7ct4f1VnO7glEtt6q46MZAUOFR5scXg7Dby2FjNVM0ull3t3U-yYdR6W9wx85olKZzkmF9pSYwnlC1JqX7N0m9kMA1G4UcX7Io9Ptho0nRCJWdHcgC9nLlNPeCQj1sUSszs7vSZX6YGVLSPwslERdogw9wa-31r12LwStmN29xHFFo28D-Ofez6KMsfolrwV8aY1e5kpc_z4347fZkaeu5zI7"/>
+</div>
+<h4 class="font-headline-sm text-headline-sm">Dr. Elena Rodriguez</h4>
+<p class="font-label-md text-label-md text-primary uppercase tracking-wider">Head of AI Research</p>
+</div>
+<!-- Team Member 4 -->
+<div class="group">
+<div class="relative aspect-square rounded-xl overflow-hidden mb-md border border-outline-variant">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A professional portrait of a man in a crisp white shirt, standing in a brightly lit innovation lab with glass whiteboards in the background. The mood is calm and controlled, using a minimalist color palette of whites and soft primary blues. High-key lighting highlights the professional and dependable nature of the individual." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZhuvox28r_Qh4ODse5w60Zf4FSBG-388GOzcj1HFALNH2fR-aKR0WiDnqUqvb2VIFGxZBBnf1DWefXCxyt8O3-Xv6QkF1dargj_ut8DBlB5J4ZvSsa64rG9t9UtOQx7jhW6Ley_4dvF5zxUKbMAvAnl73uMP-7eLP66J2KFBOMNf1nH6BPaJicIh_pPFzBR8VKcDghQmA5W3SDZdAVZ2tJgkddstSlEk6o7Hz4mA1cut3mzQlDG266_nw5H0Xw9VLA_-vRRcde5YP"/>
+</div>
+<h4 class="font-headline-sm text-headline-sm">David Park</h4>
+<p class="font-label-md text-label-md text-primary uppercase tracking-wider">VP of Engineering</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Careers Section -->
+<section class="py-xl max-w-container-max mx-auto px-gutter" id="careers">
+<div class="flex flex-col md:flex-row justify-between items-end mb-xl gap-md">
+<div>
+<h2 class="font-headline-lg text-headline-lg mb-sm">Open Positions</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl">We are looking for creative problem solvers who are passionate about using AI for social good. Join us in our San Francisco, London, or remote offices.</p>
+</div>
+<div class="flex gap-sm">
+<span class="bg-surface-container-high px-md py-xs rounded-full font-label-md text-label-md">Engineering (4)</span>
+<span class="bg-surface-container-high px-md py-xs rounded-full font-label-md text-label-md">Design (1)</span>
+<span class="bg-surface-container-high px-md py-xs rounded-full font-label-md text-label-md">Operations (2)</span>
+</div>
+</div>
+<div class="space-y-sm">
+<!-- Job Card 1 -->
+<div class="group bg-white p-lg rounded-xl border border-outline-variant flex flex-col md:flex-row justify-between items-start md:items-center hover:border-primary hover:shadow-lg transition-all cursor-pointer">
+<div class="mb-md md:mb-0">
+<h3 class="font-headline-sm text-headline-sm mb-xs group-hover:text-primary transition-colors">AI Lead</h3>
+<div class="flex flex-wrap gap-sm">
+<span class="flex items-center gap-1 font-body-sm text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-base">location_on</span> San Francisco / Remote
+                            </span>
+<span class="flex items-center gap-1 font-body-sm text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-base">schedule</span> Full-time
+                            </span>
+</div>
+</div>
+<button class="border-2 border-primary text-primary px-lg py-sm rounded-lg font-body-md text-body-md hover:bg-primary hover:text-on-primary transition-all">Apply Now</button>
+</div>
+<!-- Job Card 2 -->
+<div class="group bg-white p-lg rounded-xl border border-outline-variant flex flex-col md:flex-row justify-between items-start md:items-center hover:border-primary hover:shadow-lg transition-all cursor-pointer">
+<div class="mb-md md:mb-0">
+<h3 class="font-headline-sm text-headline-sm mb-xs group-hover:text-primary transition-colors">V2X Engineer</h3>
+<div class="flex flex-wrap gap-sm">
+<span class="flex items-center gap-1 font-body-sm text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-base">location_on</span> London / On-site
+                            </span>
+<span class="flex items-center gap-1 font-body-sm text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-base">schedule</span> Full-time
+                            </span>
+</div>
+</div>
+<button class="border-2 border-primary text-primary px-lg py-sm rounded-lg font-body-md text-body-md hover:bg-primary hover:text-on-primary transition-all">Apply Now</button>
+</div>
+<!-- Job Card 3 -->
+<div class="group bg-white p-lg rounded-xl border border-outline-variant flex flex-col md:flex-row justify-between items-start md:items-center hover:border-primary hover:shadow-lg transition-all cursor-pointer">
+<div class="mb-md md:mb-0">
+<h3 class="font-headline-sm text-headline-sm mb-xs group-hover:text-primary transition-colors">Product Designer</h3>
+<div class="flex flex-wrap gap-sm">
+<span class="flex items-center gap-1 font-body-sm text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-base">location_on</span> San Francisco / Hybrid
+                            </span>
+<span class="flex items-center gap-1 font-body-sm text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-base">schedule</span> Full-time
+                            </span>
+</div>
+</div>
+<button class="border-2 border-primary text-primary px-lg py-sm rounded-lg font-body-md text-body-md hover:bg-primary hover:text-on-primary transition-all">Apply Now</button>
+</div>
+<!-- Job Card 4 -->
+<div class="group bg-white p-lg rounded-xl border border-outline-variant flex flex-col md:flex-row justify-between items-start md:items-center hover:border-primary hover:shadow-lg transition-all cursor-pointer">
+<div class="mb-md md:mb-0">
+<h3 class="font-headline-sm text-headline-sm mb-xs group-hover:text-primary transition-colors">Safety Systems Analyst</h3>
+<div class="flex flex-wrap gap-sm">
+<span class="flex items-center gap-1 font-body-sm text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-base">location_on</span> Remote (US Timezones)
+                            </span>
+<span class="flex items-center gap-1 font-body-sm text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-base">schedule</span> Contract
+                            </span>
+</div>
+</div>
+<button class="border-2 border-primary text-primary px-lg py-sm rounded-lg font-body-md text-body-md hover:bg-primary hover:text-on-primary transition-all">Apply Now</button>
+</div>
+</div>
+</section>
+<!-- Perks Section -->
+<section class="py-xl bg-surface-container-lowest">
+<div class="max-w-container-max mx-auto px-gutter">
+<h2 class="font-headline-lg text-headline-lg mb-xl text-center">Benefits of joining RoadMind</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-lg">
+<div class="flex gap-md">
+<div class="w-12 h-12 bg-primary-fixed rounded-lg flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary">health_and_safety</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm mb-xs">Comprehensive Health</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Top-tier health, dental, and vision insurance for you and your family.</p>
+</div>
+</div>
+<div class="flex gap-md">
+<div class="w-12 h-12 bg-primary-fixed rounded-lg flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary">psychology</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm mb-xs">Learning Budget</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Annual $5k stipend for courses, conferences, and career growth.</p>
+</div>
+</div>
+<div class="flex gap-md">
+<div class="w-12 h-12 bg-primary-fixed rounded-lg flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary">work_history</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm mb-xs">Flexible Work</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Work from anywhere or join our hubs. We value output over seat time.</p>
+</div>
+</div>
+<div class="flex gap-md">
+<div class="w-12 h-12 bg-primary-fixed rounded-lg flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary">payments</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm mb-xs">Competitive Equity</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Generous stock options. We want everyone to own a part of our success.</p>
+</div>
+</div>
+<div class="flex gap-md">
+<div class="w-12 h-12 bg-primary-fixed rounded-lg flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary">vaping_rooms</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm mb-xs">Wellness First</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Monthly wellness credit and mandatory quarterly "unplug" days.</p>
+</div>
+</div>
+<div class="flex gap-md">
+<div class="w-12 h-12 bg-primary-fixed rounded-lg flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary">family_restroom</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm mb-xs">Family Support</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">16 weeks of paid parental leave and childcare assistance.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest border-t border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center px-gutter py-lg w-full max-w-container-max mx-auto gap-lg">
+<div class="flex flex-col gap-sm">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary text-2xl">route</span>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">RoadMind AI</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-xs">Building the intelligent infrastructure for the next generation of safe global transport.</p>
+</div>
+<div class="flex flex-wrap gap-xl">
+<div class="flex flex-col gap-xs">
+<span class="font-label-md text-label-md text-on-surface font-bold">Company</span>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">About Us</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Team</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors underline" href="#">Careers</a>
+</div>
+<div class="flex flex-col gap-xs">
+<span class="font-label-md text-label-md text-on-surface font-bold">Legal</span>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Security</a>
+</div>
+</div>
+</div>
+<div class="border-t border-outline-variant/30 py-md px-gutter w-full max-w-container-max mx-auto flex justify-between items-center">
+<p class="font-body-sm text-body-sm text-on-surface-variant">© 2024 RoadMind AI. All rights reserved.</p>
+<div class="flex gap-md">
+<a class="text-on-surface-variant hover:text-primary" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="text-on-surface-variant hover:text-primary" href="#"><span class="material-symbols-outlined">alternate_email</span></a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction for job cards
+        document.querySelectorAll('#careers .group').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-2px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Sticky header opacity scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-sm');
+                header.style.backgroundColor = 'rgba(250, 249, 253, 0.95)';
+                header.style.backdropFilter = 'blur(8px)';
+            } else {
+                header.classList.remove('shadow-sm');
+                header.style.backgroundColor = 'var(--surface)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+    </script>
+</body></html>

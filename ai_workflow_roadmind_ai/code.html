@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Workflow | RoadMind AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#727785",
+                    "surface-tint": "#005bc0",
+                    "on-primary": "#ffffff",
+                    "tertiary-container": "#c55500",
+                    "surface": "#faf9fd",
+                    "secondary": "#005ac1",
+                    "on-secondary-fixed": "#001a41",
+                    "surface-bright": "#faf9fd",
+                    "on-surface": "#1a1b1e",
+                    "inverse-primary": "#adc7ff",
+                    "on-primary-container": "#ffffff",
+                    "surface-container-high": "#e9e7eb",
+                    "inverse-on-surface": "#f1f0f4",
+                    "tertiary-fixed": "#ffdbcb",
+                    "surface-dim": "#dbd9dd",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-highest": "#e3e2e6",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed": "#001a41",
+                    "on-primary-fixed-variant": "#004493",
+                    "primary-fixed": "#d8e2ff",
+                    "on-surface-variant": "#414754",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb691",
+                    "secondary-container": "#4d8efe",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "on-tertiary-fixed-variant": "#783100",
+                    "tertiary": "#9e4300",
+                    "primary-fixed-dim": "#adc7ff",
+                    "secondary-fixed": "#d8e2ff",
+                    "on-background": "#1a1b1e",
+                    "surface-variant": "#e3e2e6",
+                    "on-secondary-container": "#00285c",
+                    "surface-container-low": "#f4f3f7",
+                    "primary": "#005bbf",
+                    "outline-variant": "#c1c6d6",
+                    "surface-container": "#efedf1",
+                    "on-tertiary-container": "#0e0200",
+                    "background": "#faf9fd",
+                    "on-secondary-fixed-variant": "#004494",
+                    "error-container": "#ffdad6",
+                    "inverse-surface": "#2f3033",
+                    "on-error": "#ffffff",
+                    "primary-container": "#1a73e8",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed": "#341100"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "4px",
+                    "xl": "48px",
+                    "lg": "32px",
+                    "md": "24px",
+                    "xs": "8px",
+                    "gutter": "24px",
+                    "sm": "16px",
+                    "container-max": "1440px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "code": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "code": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .flow-line {
+            background: linear-gradient(90deg, transparent 0%, #005bbf 50%, transparent 100%);
+            background-size: 200% 100%;
+            animation: flowMove 3s linear infinite;
+        }
+        @keyframes flowMove {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        .bento-card {
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .bento-card:hover {
+            transform: translateY(-4px);
+        }
+        .workflow-step:hover .step-icon {
+            transform: scale(1.1);
+            background-color: #d8e2ff;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopAppBar -->
+<nav class="bg-surface docked full-width top-0 sticky z-50 border-b border-outline-variant">
+<div class="flex justify-between items-center px-gutter py-md w-full max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-sm">
+<span class="font-headline-md text-headline-md font-bold text-primary">RoadMind AI</span>
+</div>
+<div class="hidden md:flex items-center gap-lg">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Home</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Features</a>
+<a class="font-body-md text-body-md text-primary border-b-2 border-primary pb-1" href="#">AI Workflow</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Dashboard</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Map</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Analytics</a>
+</div>
+<div class="flex items-center gap-sm">
+<button class="px-sm py-xs font-label-md text-label-md text-primary hover:bg-surface-container-low transition-colors rounded-lg">Login</button>
+<button class="px-md py-sm font-label-md text-label-md bg-primary text-on-primary rounded-lg hover:opacity-90 active:scale-[0.98] transition-all">Get Started</button>
+</div>
+</div>
+</nav>
+<main class="w-full max-w-container-max mx-auto px-gutter py-xl">
+<!-- Hero Section -->
+<header class="text-center max-w-3xl mx-auto mb-xl">
+<span class="font-label-md text-label-md text-primary tracking-widest uppercase mb-xs block">Technical Architecture</span>
+<h1 class="font-display-lg text-display-lg text-on-surface mb-sm">The Intelligence Behind Every Mile</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Our multi-layered neural pipeline processes road data in real-time to deliver life-saving insights with millisecond latency.</p>
+</header>
+<!-- Main Workflow Visualizer -->
+<section class="relative bg-surface-container-low rounded-xl p-lg md:p-xl border border-outline-variant overflow-hidden mb-xl">
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<div class="grid grid-cols-12 h-full w-full">
+<div class="border-r border-outline"></div><div class="border-r border-outline"></div><div class="border-r border-outline"></div><div class="border-r border-outline"></div><div class="border-r border-outline"></div><div class="border-r border-outline"></div><div class="border-r border-outline"></div><div class="border-r border-outline"></div><div class="border-r border-outline"></div><div class="border-r border-outline"></div><div class="border-r border-outline"></div>
+</div>
+</div>
+<div class="relative z-10 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-md items-center">
+<!-- Step 1: Camera Input -->
+<div class="workflow-step flex flex-col items-center group">
+<div class="step-icon w-16 h-16 rounded-full bg-primary-fixed flex items-center justify-center text-primary mb-sm transition-all shadow-sm">
+<span class="material-symbols-outlined text-headline-md">videocam</span>
+</div>
+<div class="text-center">
+<h3 class="font-label-md text-label-md text-on-surface mb-xs">Camera Input</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">4K raw optical stream at 60fps</p>
+</div>
+</div>
+<!-- Connector 1 -->
+<div class="hidden lg:block h-px flow-line w-full opacity-40"></div>
+<!-- Step 2: Object Detection -->
+<div class="workflow-step flex flex-col items-center group">
+<div class="step-icon w-16 h-16 rounded-full bg-secondary-fixed flex items-center justify-center text-secondary mb-sm transition-all shadow-sm">
+<span class="material-symbols-outlined text-headline-md">person_search</span>
+</div>
+<div class="text-center">
+<h3 class="font-label-md text-label-md text-on-surface mb-xs">Object Detection</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Edge-AI YOLOv9 processing</p>
+</div>
+</div>
+<!-- Connector 2 -->
+<div class="hidden lg:block h-px flow-line w-full opacity-40"></div>
+<!-- Step 3: Hazard Classification -->
+<div class="workflow-step flex flex-col items-center group">
+<div class="step-icon w-16 h-16 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary mb-sm transition-all shadow-sm">
+<span class="material-symbols-outlined text-headline-md">warning</span>
+</div>
+<div class="text-center">
+<h3 class="font-label-md text-label-md text-on-surface mb-xs">Hazard Classification</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Context-aware severity analysis</p>
+</div>
+</div>
+<!-- Connector 3 -->
+<div class="hidden lg:block h-px flow-line w-full opacity-40"></div>
+<!-- Step 4: Confidence Scoring -->
+<div class="workflow-step flex flex-col items-center group">
+<div class="step-icon w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center text-outline mb-sm transition-all shadow-sm">
+<span class="material-symbols-outlined text-headline-md">query_stats</span>
+</div>
+<div class="text-center">
+<h3 class="font-label-md text-label-md text-on-surface mb-xs">Confidence Scoring</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Bayesian statistical validation</p>
+</div>
+</div>
+<!-- Connector 4 -->
+<div class="hidden lg:block h-px flow-line w-full opacity-40"></div>
+<!-- Step 5: Prediction Engine -->
+<div class="workflow-step flex flex-col items-center group">
+<div class="step-icon w-16 h-16 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container mb-sm transition-all shadow-sm">
+<span class="material-symbols-outlined text-headline-md">trending_up</span>
+</div>
+<div class="text-center">
+<h3 class="font-label-md text-label-md text-on-surface mb-xs">Prediction Engine</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Future trajectory simulation</p>
+</div>
+</div>
+<!-- Connector 5 -->
+<div class="hidden lg:block h-px flow-line w-full opacity-40"></div>
+<!-- Step 6: Driver Alert -->
+<div class="workflow-step flex flex-col items-center group">
+<div class="step-icon w-16 h-16 rounded-full bg-error-container flex items-center justify-center text-error mb-sm transition-all shadow-sm">
+<span class="material-symbols-outlined text-headline-md">notification_important</span>
+</div>
+<div class="text-center">
+<h3 class="font-label-md text-label-md text-on-surface mb-xs">Driver Alert</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Haptic & visual HUD feedback</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid Detailed Info -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Bento Item 1: Visual Feed -->
+<div class="md:col-span-8 bento-card bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm flex flex-col">
+<div class="p-md border-b border-outline-variant bg-surface-container flex justify-between items-center">
+<div class="flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-error animate-pulse"></span>
+<span class="font-label-md text-label-md text-on-surface">Live Perception Engine Feed</span>
+</div>
+<span class="font-code text-code text-on-surface-variant uppercase tracking-tighter">Latency: 12ms</span>
+</div>
+<div class="relative flex-grow min-h-[320px]">
+<div class="w-full h-full bg-cover bg-center" data-alt="A clean, cinematic dashboard view of a modern electric vehicle's perspective on a busy city street. The UI overlays the road with semi-transparent blue bounding boxes around cars and pedestrians. The aesthetic is ultra-modern, high-tech, and minimal, using a soft daylight lighting scheme and a palette of crisp whites and deep corporate blues." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAYk042YIcOqkjkZvxi1VY7lZTQdl-zK5-90oehErR4oe00Do2rgfZxKwRZqNh_I4VPTUB9pGbklTLh0UbvJtyL4LvzPbBQRVkh2PQZaFc5We4tonCcXVe7LaXRsx_Tf0AYPwKuX-1lmjco1Jw6lIIUrY7-EpbY4xXMiKhJ7_C3DUzVgBbj2c1izNCxlp81vJxyakktSZK3Y9k4lsr0F86uTgXWxMnnG-0U619by_alUuTl7HqOinQuNXBAdYy38Eff8fu0ogX9y48R')"></div>
+<div class="absolute top-4 left-4 bg-black/40 backdrop-blur-md p-sm rounded-lg border border-white/20">
+<div class="flex items-center gap-md">
+<div>
+<p class="text-[10px] text-white/70 uppercase">Objects</p>
+<p class="font-headline-md text-white">42</p>
+</div>
+<div class="h-8 w-px bg-white/20"></div>
+<div>
+<p class="text-[10px] text-white/70 uppercase">Hazards</p>
+<p class="font-headline-md text-error">03</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bento Item 2: Stat Card -->
+<div class="md:col-span-4 bento-card bg-primary-container p-md md:p-lg rounded-xl text-on-primary flex flex-col justify-between shadow-sm">
+<div>
+<h3 class="font-headline-md text-headline-md mb-xs">99.9% Accuracy</h3>
+<p class="font-body-md text-body-md opacity-80">Our proprietary scoring model filters out 99.9% of false positives, ensuring drivers only receive critical, actionable alerts.</p>
+</div>
+<div class="mt-lg">
+<div class="flex justify-between items-end mb-xs">
+<span class="font-label-md text-label-md">Model Optimization</span>
+<span class="font-label-md text-label-md">Active</span>
+</div>
+<div class="w-full h-2 bg-on-primary/20 rounded-full overflow-hidden">
+<div class="h-full bg-white w-4/5 rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Bento Item 3: Hazard Matrix -->
+<div class="md:col-span-4 bento-card bg-surface-container-low border border-outline-variant p-md rounded-xl flex flex-col gap-sm shadow-sm">
+<div class="flex items-center gap-xs text-primary">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="font-label-md text-label-md uppercase">Hazard Matrix</span>
+</div>
+<div class="space-y-sm">
+<div class="flex items-center justify-between p-xs bg-surface-container-lowest rounded-lg border border-outline-variant">
+<span class="font-body-sm text-body-sm">Potholes</span>
+<span class="bg-primary/10 text-primary px-xs py-[2px] rounded text-[10px] font-bold">DETECTED</span>
+</div>
+<div class="flex items-center justify-between p-xs bg-surface-container-lowest rounded-lg border border-outline-variant">
+<span class="font-body-sm text-body-sm">Pedestrian</span>
+<span class="bg-secondary/10 text-secondary px-xs py-[2px] rounded text-[10px] font-bold">TRACKING</span>
+</div>
+<div class="flex items-center justify-between p-xs bg-surface-container-lowest rounded-lg border border-outline-variant">
+<span class="font-body-sm text-body-sm">Black Ice</span>
+<span class="bg-tertiary/10 text-tertiary px-xs py-[2px] rounded text-[10px] font-bold">PREDICTIVE</span>
+</div>
+</div>
+</div>
+<!-- Bento Item 4: Prediction Engine -->
+<div class="md:col-span-8 bento-card bg-surface-container-highest border border-outline-variant rounded-xl p-md md:p-lg shadow-sm flex flex-col md:flex-row gap-lg">
+<div class="flex-1">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">The Prediction Loop</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">Our engine calculates 10,000+ possible trajectories per second for every detected object, selecting the most probable path to preempt danger.</p>
+<ul class="space-y-xs">
+<li class="flex items-center gap-xs font-body-sm text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-[18px]">check_circle</span>
+                            Kalman Filter Smoothing
+                        </li>
+<li class="flex items-center gap-xs font-body-sm text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-[18px]">check_circle</span>
+                            Recurrent Neural Network Logic
+                        </li>
+</ul>
+</div>
+<div class="flex-1 relative bg-white/50 rounded-lg p-sm border border-outline-variant flex items-center justify-center min-h-[160px]">
+<!-- Simulated Graph -->
+<div class="w-full h-full flex items-end gap-1">
+<div class="bg-primary-container w-full h-[30%] rounded-t-sm"></div>
+<div class="bg-primary-container w-full h-[45%] rounded-t-sm"></div>
+<div class="bg-primary-container w-full h-[35%] rounded-t-sm"></div>
+<div class="bg-primary-container w-full h-[60%] rounded-t-sm"></div>
+<div class="bg-primary-container w-full h-[80%] rounded-t-sm"></div>
+<div class="bg-primary w-full h-[95%] rounded-t-sm"></div>
+<div class="bg-primary-container w-full h-[70%] rounded-t-sm"></div>
+<div class="bg-primary-container w-full h-[50%] rounded-t-sm"></div>
+<div class="bg-primary-container w-full h-[65%] rounded-t-sm"></div>
+<div class="bg-primary-container w-full h-[40%] rounded-t-sm"></div>
+</div>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="bg-white px-sm py-xs rounded-full shadow-lg border border-outline-variant font-label-md text-label-md text-primary">Trajectory Confidence: 94%</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest mt-xl border-t border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-center px-gutter py-lg w-full max-w-container-max mx-auto gap-md">
+<div>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">RoadMind AI</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">Empowering the future of safe mobility through intelligent precision.</p>
+</div>
+<div class="flex gap-lg">
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-opacity" href="#">Sitemap</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-opacity" href="#">Privacy Policy</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-opacity" href="#">Terms of Service</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-opacity" href="#">Security</a>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant opacity-60">© 2024 RoadMind AI. All rights reserved.</p>
+</div>
+</footer>
+<script>
+        // Micro-interactions for the workflow steps
+        document.querySelectorAll('.workflow-step').forEach(step => {
+            step.addEventListener('click', () => {
+                // Subtle interaction logic if needed
+                step.classList.add('scale-95');
+                setTimeout(() => step.classList.remove('scale-95'), 100);
+            });
+        });
+
+        // Theme toggle logic (if needed, currently light)
+        const toggleTheme = () => {
+            document.documentElement.classList.toggle('dark');
+        };
+    </script>
+</body></html>
