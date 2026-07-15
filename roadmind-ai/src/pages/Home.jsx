@@ -1,3 +1,5 @@
+import heroImage from "../assets/hero-dashboard.png";
+
 function Home() {
   return (
     <div>
@@ -93,7 +95,8 @@ function Home() {
             <p className="text-gray-600 text-lg mt-6">
 
               Deploy secure, real-time computer vision at the edge.
-              Monitor high-risk zones without compromising individual privacy.
+              Monitor high-risk zones without compromising individual privacy through
+              proprietary on-device de-identification.
 
             </p>
 
@@ -127,9 +130,8 @@ function Home() {
           <div className="h-[500px] rounded-xl overflow-hidden">
 
             <img
-              className="w-full h-full object-cover"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3c2epXLrH98T_MRe4GcUlENXUBi5_Aaa4weFVG-JKFtNFoBIqZnW18suHkMg4KQwOoYPXxnjNjw0WkIuZnlbRtTB2p5bdafwGmM_S_cI-Bai407zraZYUKA5zUSEgU1G1fJZ-6ZQ6EeJdGCn_xLwFWPpfOJJH0HYWCx8zghQqsddY62bGzuCzLW4yQJVzxqBpcLAIqedE0oHzskg0yG6ngMZeWyPQmGSF9sIKux8T0Gxzfjlx0TInuAIjZHKPO7dx6UcsaU32Ve_J"
-              alt="RoadMind AI"
+               src={heroImage}
+               className="w-full h-full object-cover"
             />
 
           </div>
