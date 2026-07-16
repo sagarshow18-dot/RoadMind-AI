@@ -32,7 +32,8 @@ function Home() {
              Features
             </Link>
 
-            <Link to="/workflow" className="text-gray-600 hover:text-blue-600 cursor-pointer">
+            <Link to="/workflow" 
+            className="text-gray-600 hover:text-blue-600 cursor-pointer">
               AI Workflow
             </Link>
 
