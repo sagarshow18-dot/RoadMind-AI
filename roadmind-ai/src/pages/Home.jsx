@@ -1,4 +1,5 @@
 import heroImage from "../assets/hero-dashboard.png";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
@@ -17,17 +18,23 @@ function Home() {
 
           <div className="hidden md:flex gap-8">
 
-            <a className="text-blue-600 border-b-2 border-blue-600 pb-1">
-              Home
-            </a>
+            <Link
+              to="/"
+              className="text-blue-600 border-b-2 border-blue-600 pb-1 cursor-pointer"
+           >
+            Home
+            </Link>
 
-            <a className="text-gray-600">
-              Features
-            </a>
+            <Link
+              to="/features"
+              className="text-gray-600 hover:text-blue-600 cursor-pointer"
+            >
+             Features
+            </Link>
 
-            <a className="text-gray-600">
+            <Link to="/workflow" className="text-gray-600 hover:text-blue-600 cursor-pointer">
               AI Workflow
-            </a>
+            </Link>
 
             <a className="text-gray-600">
               Dashboard

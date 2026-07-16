@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Features() {
   return (
     <>
@@ -11,7 +13,9 @@ function Features() {
           </div>
 
           <div className="hidden md:flex gap-8">
-            <a href="#">Home</a>
+           <Link to="/" className="text-gray-600 hover:text-blue-600">
+  Home
+           </Link>
 
             <a
               href="#"
@@ -20,7 +24,10 @@ function Features() {
               Features
             </a>
 
-            <a href="#">AI Workflow</a>
+           <Link to="/workflow" className="text-gray-600 hover:text-blue-600 cursor-pointer">
+              AI Workflow
+            </Link>
+
             <a href="#">Dashboard</a>
             <a href="#">Map</a>
           </div>
