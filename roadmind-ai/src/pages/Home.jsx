@@ -10,7 +10,7 @@ function Home() {
         <nav className="flex justify-between items-center px-6 py-4 max-w-[1440px] mx-auto">
 
           <div className="flex items-center">
-            <Link to="/" className="font-bold text-xl">
+            <Link to="/" className="text-2xl font-bold text-blue-600">
                RoadMind AI
              </Link>
           </div>

@@ -9,7 +9,7 @@ function Workflow() {
       <header className="bg-white border-b sticky top-0 z-50">
         <nav className="max-w-[1440px] mx-auto flex justify-between items-center px-6 py-4">
 
-          <Link to="/" className="font-bold text-xl">
+          <Link to="/" className="text-2xl font-bold text-blue-600">
             RoadMind AI
           </Link>
           <div className="hidden md:flex gap-8">
