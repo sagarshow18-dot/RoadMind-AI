@@ -17,12 +17,9 @@ function Features() {
   Home
            </Link>
 
-            <a
-              href="#"
-              className="text-blue-600 font-semibold border-b-2 border-blue-600 pb-1"
-            >
+            <Link to="/features" className="text-gray-600 hover:text-blue-600">
               Features
-            </a>
+            </Link>
 
            <Link to="/workflow" className="text-gray-600 hover:text-blue-600 cursor-pointer">
               AI Workflow

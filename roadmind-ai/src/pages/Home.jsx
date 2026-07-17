@@ -46,10 +46,13 @@ function Home() {
 
             
 
-            <link>
-               to ="/dashboard"
-               className="text-gray-600 hover:text-blue-600 cursor-pointer"
-            </link>
+           <Link
+              to="/dashboard"
+              className="text-gray-600 hover:text-blue-600"
+            >
+              Dashboard
+            </Link>
+
             <a className="text-gray-600">
               Map
             </a>
