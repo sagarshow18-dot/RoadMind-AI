@@ -6,7 +6,7 @@ function Home() {
     <div>
 
       {/* NAVBAR START */}
-      <header className="bg-surface border-b border-outline-variant sticky top-0 z-50">
+      <header className="bg-white border-b sticky top-0 z-50">
         <nav className="flex justify-between items-center px-6 py-4 max-w-[1440px] mx-auto">
 
           <div className="flex items-center">
@@ -36,11 +36,20 @@ function Home() {
             className="text-gray-600 hover:text-blue-600 cursor-pointer">
               AI Workflow
             </Link>
+            
+            <Link
+              to="/architecture"
+              className="text-on-surface-variant hover:text-primary transition-colors"
+            >
+              Architecture
+            </Link>
 
-            <a className="text-gray-600">
-              Dashboard
-            </a>
+            
 
+            <link>
+               to ="/dashboard"
+               className="text-gray-600 hover:text-blue-600 cursor-pointer"
+            </link>
             <a className="text-gray-600">
               Map
             </a>
