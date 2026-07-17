@@ -7,14 +7,14 @@ function Features() {
       <header className="bg-white border-b sticky top-0 z-50">
         <nav className="flex justify-between items-center px-6 py-4 max-w-[1440px] mx-auto">
           <div className="flex items-center gap-2">
-            <span className="text-2xl font-bold text-blue-600">
+            <Link to="/" className="font-bold text-xl">
               RoadMind AI
-            </span>
+            </Link>
           </div>
 
           <div className="hidden md:flex gap-8">
            <Link to="/" className="text-gray-600 hover:text-blue-600">
-  Home
+             Home
            </Link>
 
             <Link to="/features" className="text-gray-600 hover:text-blue-600">

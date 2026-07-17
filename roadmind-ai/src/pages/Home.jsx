@@ -10,9 +10,9 @@ function Home() {
         <nav className="flex justify-between items-center px-6 py-4 max-w-[1440px] mx-auto">
 
           <div className="flex items-center">
-            <span className="text-2xl font-bold text-blue-600">
-              RoadMind AI
-            </span>
+            <Link to="/" className="font-bold text-xl">
+               RoadMind AI
+             </Link>
           </div>
 
 
@@ -37,12 +37,7 @@ function Home() {
               AI Workflow
             </Link>
             
-            <Link
-              to="/architecture"
-              className="text-on-surface-variant hover:text-primary transition-colors"
-            >
-              Architecture
-            </Link>
+            
 
             
 
@@ -57,9 +52,12 @@ function Home() {
               Map
             </a>
 
-            <a className="text-gray-600">
-              Analytics
-            </a>
+            <Link
+             to="/analytics"
+             className="text-gray-600 hover:text-blue-600"
+            >
+             Analytics
+           </Link>
 
           </div>
 

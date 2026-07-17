@@ -9,10 +9,9 @@ function Workflow() {
       <header className="bg-white border-b sticky top-0 z-50">
         <nav className="max-w-[1440px] mx-auto flex justify-between items-center px-6 py-4">
 
-          <h1 className="text-2xl font-bold text-blue-600">
+          <Link to="/" className="font-bold text-xl">
             RoadMind AI
-          </h1>
-
+          </Link>
           <div className="hidden md:flex gap-8">
 
             <Link to="/" className="text-gray-600 hover:text-blue-600">
@@ -72,9 +71,12 @@ function Workflow() {
 
       <section className="max-w-[1440px] mx-auto px-6 py-20 text-center">
 
-        <p className="uppercase tracking-[4px] text-blue-600 font-semibold">
-          Technical Architecture
-        </p>
+        <Link
+         to="/architecture"
+         className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
+        >
+         Technical Architecture
+        </Link>
 
         <h1 className="text-5xl font-bold mt-4">
           The Intelligence Behind Every Mile

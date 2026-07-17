@@ -6,6 +6,7 @@ import Features from "./pages/Features";
 import Workflow from "./pages/AIWorkflow";
 import Architecture from "./pages/Architecture";
 import Dashboard from "./pages/Dashboard";
+import Analytics from "./pages/Analytics";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
@@ -20,6 +21,7 @@ function App() {
         <Route path="/workflow" element={<Workflow />} />
         <Route path="/architecture" element={<Architecture />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/analytics" element={<Analytics />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<NotFound />} />

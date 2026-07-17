@@ -5,7 +5,7 @@ function Architecture() {
     <div className="bg-surface text-on-surface font-body-md min-h-screen flex flex-col">
 
       {/* ================= NAVBAR ================= */}
-      <header className="bg-surface sticky top-0 z-50 border-b border-outline-variant">
+      <header className="bg-white border-b sticky top-0 z-50">
         <div className="flex justify-between items-center px-6 py-3 max-w-[1440px] mx-auto h-16">
 
           {/* Logo */}

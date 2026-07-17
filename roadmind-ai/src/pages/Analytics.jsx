@@ -5,7 +5,7 @@ function Analytics() {
     <div className="bg-gray-50 text-gray-900 min-h-screen flex">
 
       {/* SIDEBAR */}
-      <aside className="fixed left-0 top-0 h-full w-[256px] bg-gray-100 border-r p-4">
+      <aside className="fixed left-0 top-0 z-40 h-full w-[256px] bg-gray-100 border-r p-4">
 
         <div className="mb-8">
           <h1 className="text-xl font-bold">
@@ -83,9 +83,9 @@ function Analytics() {
 
 
       {/* MAIN CONTENT */}
-      <main className="ml-[256px] flex-1">
+      <main className="relative z-0 ml-[256px] flex-1">
 
-        <header className="sticky top-0 bg-white border-b p-6">
+        <header className="sticky top-0 z-30 bg-white border-b p-6">
 
           <h2 className="text-2xl font-bold">
             Predictive Analytics
@@ -307,6 +307,772 @@ function Analytics() {
 
 
 </section>
+{/* ALERT ACCURACY DISTRIBUTION */}
+
+<section className="px-6 pb-6">
+
+<div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+
+{/* Pie Chart Card */}
+
+<div className="bg-white border rounded-xl p-6">
+
+<h3 className="text-xl font-bold mb-6">
+Alert Accuracy Distribution
+</h3>
+
+
+<div className="flex flex-col items-center">
+
+
+<div className="w-48 h-48 rounded-full border-[16px] border-blue-200 flex items-center justify-center">
+
+<div className="text-center">
+
+<h2 className="text-3xl font-bold">
+98.4%
+</h2>
+
+<p className="text-gray-500 text-sm">
+Conf. Score
+</p>
+
+</div>
+
+</div>
+
+
+
+<div className="mt-6 w-full">
+
+
+<div className="flex justify-between">
+<span>
+True Positive
+</span>
+
+<span className="text-blue-600 font-bold">
+82%
+</span>
+
+</div>
+
+
+<div className="h-2 bg-gray-200 rounded mt-2">
+
+<div className="h-full bg-blue-600 rounded w-[82%]"></div>
+
+</div>
+
+
+
+<div className="flex justify-between mt-4">
+
+<span>
+True Negative
+</span>
+
+<span className="text-blue-500 font-bold">
+16.4%
+</span>
+
+</div>
+
+
+<div className="h-2 bg-gray-200 rounded mt-2">
+
+<div className="h-full bg-blue-300 rounded w-[16%]"></div>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+{/* Regional Safety Scores */}
+
+<div className="bg-white border rounded-xl p-6 lg:col-span-2">
+
+
+<h3 className="text-xl font-bold mb-8">
+Regional Safety Scores
+</h3>
+
+
+<div className="flex justify-around items-end h-64">
+
+
+{
+[
+["North District","85%"],
+["East Coast","62%"],
+["Central Hub","94%"],
+["South Corridor","45%"],
+["West Perimeter","78%"]
+].map((item,index)=>(
+
+
+<div 
+key={index}
+className="flex flex-col items-center gap-3"
+>
+
+
+<div
+className="w-12 bg-blue-600 rounded-t-lg"
+style={{
+height:item[1]
+}}
+>
+</div>
+
+
+<span className="text-xs text-center">
+{item[0]}
+</span>
+
+
+</div>
+
+
+))
+
+}
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+</section>
+
+
+
+
+
+{/* RECENT ANOMALY TABLE */}
+
+<section className="px-6 pb-6">
+
+
+<div className="bg-white border rounded-xl overflow-hidden">
+
+
+<div className="p-6 border-b flex justify-between">
+
+<h3 className="text-xl font-bold">
+Recent Anomaly Logs
+</h3>
+
+
+<span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-bold">
+Live Updates Active
+</span>
+
+
+</div>
+
+
+
+
+<div className="overflow-x-auto">
+
+
+<table className="w-full text-left">
+
+
+<thead className="bg-gray-100">
+
+
+<tr>
+
+<th className="p-4">
+Time & Date
+</th>
+
+<th className="p-4">
+Location
+</th>
+
+<th className="p-4">
+Hazard Type
+</th>
+
+<th className="p-4">
+Confidence
+</th>
+
+<th className="p-4">
+Status
+</th>
+
+</tr>
+
+
+</thead>
+
+
+
+<tbody>
+
+
+<tr className="border-t">
+
+<td className="p-4">
+Oct 24, 09:42 AM
+</td>
+
+
+<td className="p-4">
+Intersection 44B
+</td>
+
+
+<td className="p-4">
+Pothole Expansion
+</td>
+
+
+<td className="p-4">
+94%
+</td>
+
+
+<td className="p-4">
+
+<span className="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-bold">
+CRITICAL
+</span>
+
+</td>
+
+
+</tr>
+
+
+
+
+
+<tr className="border-t">
+
+
+<td className="p-4">
+Oct 24, 08:15 AM
+</td>
+
+
+<td className="p-4">
+Highway 101
+</td>
+
+
+<td className="p-4">
+Obstructed Sign
+</td>
+
+
+<td className="p-4">
+88%
+</td>
+
+
+<td className="p-4">
+
+<span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-bold">
+MONITORING
+</span>
+
+</td>
+
+
+</tr>
+
+
+
+
+
+<tr className="border-t">
+
+
+<td className="p-4">
+Oct 23, 11:58 PM
+</td>
+
+
+<td className="p-4">
+Main St & 5th Ave
+</td>
+
+
+<td className="p-4">
+Illegal U-Turn Pattern
+</td>
+
+
+<td className="p-4">
+76%
+</td>
+
+
+<td className="p-4">
+
+<span className="bg-gray-200 px-3 py-1 rounded-full text-xs font-bold">
+LOGGED
+</span>
+
+</td>
+
+
+</tr>
+
+
+
+</tbody>
+
+
+</table>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+{/* ALERT ACCURACY DISTRIBUTION */}
+
+<section className="px-6 pb-6">
+
+  <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+
+    {/* Accuracy Card */}
+
+    <div className="bg-white border rounded-xl p-6">
+
+      <h3 className="text-xl font-bold mb-6">
+        Alert Accuracy Distribution
+      </h3>
+
+
+      <div className="flex flex-col items-center">
+
+
+        <div className="w-48 h-48 rounded-full border-[16px] border-blue-200 flex items-center justify-center">
+
+          <div className="text-center">
+
+            <h2 className="text-3xl font-bold">
+              98.4%
+            </h2>
+
+            <p className="text-gray-500 text-sm">
+              Conf. Score
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div className="mt-6 w-full">
+
+
+          <div className="flex justify-between">
+
+            <span>
+              True Positive
+            </span>
+
+            <span className="text-blue-600 font-bold">
+              82%
+            </span>
+
+          </div>
+
+
+          <div className="h-2 bg-gray-200 rounded mt-2">
+
+            <div className="h-full bg-blue-600 rounded w-[82%]"></div>
+
+          </div>
+
+
+
+          <div className="flex justify-between mt-4">
+
+            <span>
+              True Negative
+            </span>
+
+            <span className="text-blue-500 font-bold">
+              16.4%
+            </span>
+
+          </div>
+
+
+          <div className="h-2 bg-gray-200 rounded mt-2">
+
+            <div className="h-full bg-blue-300 rounded w-[16%]"></div>
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
+
+    {/* Regional Safety Scores */}
+
+    <div className="bg-white border rounded-xl p-6 lg:col-span-2">
+
+
+      <h3 className="text-xl font-bold mb-8">
+        Regional Safety Scores
+      </h3>
+
+
+      <div className="flex justify-around items-end h-64">
+
+
+        <div className="flex flex-col items-center gap-3">
+          <div className="w-12 bg-blue-600 rounded-t-lg h-[85%]"></div>
+          <span className="text-xs">
+            North District
+          </span>
+        </div>
+
+
+        <div className="flex flex-col items-center gap-3">
+          <div className="w-12 bg-blue-600 rounded-t-lg h-[62%]"></div>
+          <span className="text-xs">
+            East Coast
+          </span>
+        </div>
+
+
+        <div className="flex flex-col items-center gap-3">
+          <div className="w-12 bg-blue-600 rounded-t-lg h-[94%]"></div>
+          <span className="text-xs">
+            Central Hub
+          </span>
+        </div>
+
+
+        <div className="flex flex-col items-center gap-3">
+          <div className="w-12 bg-blue-600 rounded-t-lg h-[45%]"></div>
+          <span className="text-xs">
+            South Corridor
+          </span>
+        </div>
+
+
+        <div className="flex flex-col items-center gap-3">
+          <div className="w-12 bg-blue-600 rounded-t-lg h-[78%]"></div>
+          <span className="text-xs">
+            West Perimeter
+          </span>
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+</section>
+
+{/* RECENT ANOMALY LOGS */}
+
+<section className="px-6 pb-6">
+
+  <div className="bg-white border rounded-xl overflow-hidden shadow-sm">
+
+
+    {/* Table Header */}
+
+    <div className="p-6 border-b flex justify-between items-center">
+
+      <h3 className="text-xl font-bold">
+        Recent Anomaly Logs
+      </h3>
+
+
+      <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-bold">
+        Live Updates Active
+      </span>
+
+
+    </div>
+
+
+
+    {/* Table */}
+
+    <div className="overflow-x-auto">
+
+      <table className="w-full text-left">
+
+
+        <thead className="bg-gray-100">
+
+          <tr>
+
+            <th className="px-6 py-4 text-sm">
+              Time & Date
+            </th>
+
+            <th className="px-6 py-4 text-sm">
+              Location
+            </th>
+
+            <th className="px-6 py-4 text-sm">
+              Hazard Type
+            </th>
+
+            <th className="px-6 py-4 text-sm">
+              Confidence
+            </th>
+
+            <th className="px-6 py-4 text-sm">
+              Status
+            </th>
+
+            <th className="px-6 py-4 text-sm">
+              Action
+            </th>
+
+          </tr>
+
+        </thead>
+
+
+
+        <tbody>
+
+
+          <tr className="border-t hover:bg-gray-50">
+
+
+            <td className="px-6 py-4">
+              Oct 24, 09:42 AM
+            </td>
+
+
+            <td className="px-6 py-4">
+              Intersection 44B
+            </td>
+
+
+            <td className="px-6 py-4">
+              Pothole Expansion
+            </td>
+
+
+            <td className="px-6 py-4">
+              94%
+            </td>
+
+
+            <td className="px-6 py-4">
+
+              <span className="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-bold">
+                CRITICAL
+              </span>
+
+            </td>
+
+
+            <td className="px-6 py-4">
+
+              <button className="text-blue-600 font-semibold hover:underline">
+                Dispatch Info
+              </button>
+
+            </td>
+
+
+          </tr>
+
+
+
+
+
+          <tr className="border-t hover:bg-gray-50">
+
+
+            <td className="px-6 py-4">
+              Oct 24, 08:15 AM
+            </td>
+
+
+            <td className="px-6 py-4">
+              Highway 101, Exit 4
+            </td>
+
+
+            <td className="px-6 py-4">
+              Obstructed Sign
+            </td>
+
+
+            <td className="px-6 py-4">
+              88%
+            </td>
+
+
+            <td className="px-6 py-4">
+
+              <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-bold">
+                MONITORING
+              </span>
+
+            </td>
+
+
+            <td className="px-6 py-4">
+
+              <button className="text-blue-600 font-semibold hover:underline">
+                Dismiss
+              </button>
+
+            </td>
+
+
+          </tr>
+
+
+
+
+
+          <tr className="border-t hover:bg-gray-50">
+
+
+            <td className="px-6 py-4">
+              Oct 23, 11:58 PM
+            </td>
+
+
+            <td className="px-6 py-4">
+              Main St & 5th Ave
+            </td>
+
+
+            <td className="px-6 py-4">
+              Illegal U-Turn Pattern
+            </td>
+
+
+            <td className="px-6 py-4">
+              76%
+            </td>
+
+
+            <td className="px-6 py-4">
+
+              <span className="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-xs font-bold">
+                LOGGED
+              </span>
+
+            </td>
+
+
+            <td className="px-6 py-4">
+
+              <button className="text-blue-600 font-semibold hover:underline">
+                View Analytics
+              </button>
+
+            </td>
+
+
+          </tr>
+
+
+        </tbody>
+
+
+      </table>
+
+
+    </div>
+
+
+  </div>
+
+
+</section>
+
+
+{/* FOOTER */}
+
+<footer className="border-t bg-gray-100 p-8">
+
+
+<div className="flex justify-between">
+
+
+<div>
+
+<h3 className="font-bold">
+RoadMind AI
+</h3>
+
+<p className="text-sm text-gray-500">
+© 2024 RoadMind AI. All rights reserved.
+</p>
+
+</div>
+
+
+<div className="flex gap-6 text-sm text-gray-500">
+
+<span>
+Privacy Policy
+</span>
+
+<span>
+Terms
+</span>
+
+<span>
+Security
+</span>
+
+</div>
+
+
+</div>
+
+
+</footer>
 
       </main>
 

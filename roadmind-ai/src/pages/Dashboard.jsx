@@ -1,3 +1,5 @@
+
+import { Link } from "react-router-dom";
 import React from "react";
 
 function Dashboard() {
@@ -8,9 +10,9 @@ function Dashboard() {
       <aside className="fixed left-0 top-0 h-full w-[256px] flex flex-col py-6 px-4 bg-[#f4f3f7] border-r border-[#c1c6d6]">
 
         <div className="mb-8">
-          <h1 className="text-xl font-bold">
+          <Link to="/" className="font-bold text-xl">
             RoadMind AI
-          </h1>
+          </Link>
           <p className="text-sm text-gray-500">
             Enterprise Safety
           </p>
